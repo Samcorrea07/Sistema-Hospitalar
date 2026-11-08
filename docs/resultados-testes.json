@@ -1,0 +1,2300 @@
+{
+  "config": {
+    "argv": [
+      "/opt/node22/bin/node",
+      "/home/claude/sghss-vidaplus/node_modules/.bin/playwright",
+      "test"
+    ],
+    "configFile": "/home/claude/sghss-vidaplus/playwright.config.js",
+    "rootDir": "/home/claude/sghss-vidaplus/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/home/claude/sghss-vidaplus/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop-chromium",
+        "name": "desktop-chromium",
+        "testDir": "/home/claude/sghss-vidaplus/tests",
+        "testIgnore": [
+          "/responsivo/"
+        ],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/home/claude/sghss-vidaplus/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile-chromium",
+        "name": "mobile-chromium",
+        "testDir": "/home/claude/sghss-vidaplus/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "/acessibilidade\\/.*responsivo.*\\.spec\\.js/"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "html",
+        {
+          "outputFolder": "docs/relatorio-testes",
+          "open": "never"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "docs/resultados-testes.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": {
+      "command": "npx http-server . -p 8081 -c-1 -s",
+      "url": "http://localhost:8081/index.html",
+      "reuseExistingServer": true
+    }
+  },
+  "suites": [
+    {
+      "title": "acessibilidade/wcag.spec.js",
+      "file": "acessibilidade/wcag.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "CT-28 Auditoria automática WCAG 2.1 AA (axe-core)",
+          "file": "acessibilidade/wcag.spec.js",
+          "line": 21,
+          "column": 6,
+          "specs": [
+            {
+              "title": "público #/login",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [
+                    {
+                      "type": "axe",
+                      "description": "#/login: 25 regras aprovadas, 0 violações"
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1183,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-04T18:12:15.839Z",
+                      "annotations": [
+                        {
+                          "type": "axe",
+                          "description": "#/login: 25 regras aprovadas, 0 violações"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a9de76e615354624f719-fd010523b014b266e67f",
+              "file": "acessibilidade/wcag.spec.js",
+              "line": 23,
+              "column": 5
+            },
+            {
+              "title": "público #/cadastro",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [
+                    {
+                      "type": "axe",
+                      "description": "#/cadastro: 24 regras aprovadas, 0 violações"
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1106,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-04T18:12:17.133Z",
+                      "annotations": [
+                        {
+                          "type": "axe",
+                          "description": "#/cadastro: 24 regras aprovadas, 0 violações"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a9de76e615354624f719-990ee6fc812b493ba68b",
+              "file": "acessibilidade/wcag.spec.js",
+              "line": 23,
+              "column": 5
+            },
+            {
+              "title": "paciente #/paciente",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [
+                    {
+                      "type": "axe",
+                      "description": "#/paciente: 24 regras aprovadas, 0 violações"
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1276,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-04T18:12:18.254Z",
+                      "annotations": [
+                        {
+                          "type": "axe",
+                          "description": "#/paciente: 24 regras aprovadas, 0 violações"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a9de76e615354624f719-6257f32028990a3018f9",
+              "file": "acessibilidade/wcag.spec.js",
+              "line": 30,
+              "column": 7
+            },
+            {
+              "title": "paciente #/paciente/agendar",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [
+                    {
+                      "type": "axe",
+                      "description": "#/paciente/agendar: 27 regras aprovadas, 0 violações"
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1358,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-04T18:12:19.542Z",
+                      "annotations": [
+                        {
+                          "type": "axe",
+                          "description": "#/paciente/agendar: 27 regras aprovadas, 0 violações"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a9de76e615354624f719-e3dc2ccfb4e5b7704742",
+              "file": "acessibilidade/wcag.spec.js",
+              "line": 30,
+              "column": 7
+            },
+            {
+              "title": "paciente #/paciente/consultas",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [
+                    {
+                      "type": "axe",
+                      "description": "#/paciente/consultas: 24 regras aprovadas, 0 violações"
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1673,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-04T18:12:20.927Z",
+                      "annotations": [
+                        {
+                          "type": "axe",
+                          "description": "#/paciente/consultas: 24 regras aprovadas, 0 violações"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a9de76e615354624f719-d928a70e2686b9556a16",
+              "file": "acessibilidade/wcag.spec.js",
+              "line": 30,
+              "column": 7
+            },
+            {
+              "title": "paciente #/paciente/historico",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [
+                    {
+                      "type": "axe",
+                      "description": "#/paciente/historico: 26 regras aprovadas, 0 violações"
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1370,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-04T18:12:22.627Z",
+                      "annotations": [
+                        {
+                          "type": "axe",
+                          "description": "#/paciente/historico: 26 regras aprovadas, 0 violações"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a9de76e615354624f719-19f31afe316632609f99",
+              "file": "acessibilidade/wcag.spec.js",
+              "line": 30,
+              "column": 7
+            },
+            {
+              "title": "paciente #/paciente/dados",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [
+                    {
+                      "type": "axe",
+                      "description": "#/paciente/dados: 27 regras aprovadas, 0 violações"
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1420,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-04T18:12:24.016Z",
+                      "annotations": [
+                        {
+                          "type": "axe",
+                          "description": "#/paciente/dados: 27 regras aprovadas, 0 violações"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a9de76e615354624f719-5d847b3ad8bb5caa19b3",
+              "file": "acessibilidade/wcag.spec.js",
+              "line": 30,
+              "column": 7
+            },
+            {
+              "title": "paciente #/teleconsulta/a1",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [
+                    {
+                      "type": "axe",
+                      "description": "#/teleconsulta/a1: 27 regras aprovadas, 0 violações"
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1342,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-04T18:12:25.451Z",
+                      "annotations": [
+                        {
+                          "type": "axe",
+                          "description": "#/teleconsulta/a1: 27 regras aprovadas, 0 violações"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a9de76e615354624f719-499db5d70bb33a01fb1c",
+              "file": "acessibilidade/wcag.spec.js",
+              "line": 30,
+              "column": 7
+            },
+            {
+              "title": "profissional #/profissional",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [
+                    {
+                      "type": "axe",
+                      "description": "#/profissional: 27 regras aprovadas, 0 violações"
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1271,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-04T18:12:26.806Z",
+                      "annotations": [
+                        {
+                          "type": "axe",
+                          "description": "#/profissional: 27 regras aprovadas, 0 violações"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a9de76e615354624f719-648d63a69d8496ea3230",
+              "file": "acessibilidade/wcag.spec.js",
+              "line": 30,
+              "column": 7
+            },
+            {
+              "title": "profissional #/profissional/pacientes",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [
+                    {
+                      "type": "axe",
+                      "description": "#/profissional/pacientes: 26 regras aprovadas, 0 violações"
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1349,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-04T18:12:28.088Z",
+                      "annotations": [
+                        {
+                          "type": "axe",
+                          "description": "#/profissional/pacientes: 26 regras aprovadas, 0 violações"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a9de76e615354624f719-204d45d4e5b286a74c35",
+              "file": "acessibilidade/wcag.spec.js",
+              "line": 30,
+              "column": 7
+            },
+            {
+              "title": "profissional #/profissional/prontuario/p3",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [
+                    {
+                      "type": "axe",
+                      "description": "#/profissional/prontuario/p3: 26 regras aprovadas, 0 violações"
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1363,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-04T18:12:29.449Z",
+                      "annotations": [
+                        {
+                          "type": "axe",
+                          "description": "#/profissional/prontuario/p3: 26 regras aprovadas, 0 violações"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a9de76e615354624f719-e7baa2f2e3914c44b8fd",
+              "file": "acessibilidade/wcag.spec.js",
+              "line": 30,
+              "column": 7
+            },
+            {
+              "title": "admin #/admin",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [
+                    {
+                      "type": "axe",
+                      "description": "#/admin: 28 regras aprovadas, 0 violações"
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1601,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-04T18:12:30.833Z",
+                      "annotations": [
+                        {
+                          "type": "axe",
+                          "description": "#/admin: 28 regras aprovadas, 0 violações"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a9de76e615354624f719-0efe72199c258afb5247",
+              "file": "acessibilidade/wcag.spec.js",
+              "line": 30,
+              "column": 7
+            },
+            {
+              "title": "admin #/admin/leitos",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [
+                    {
+                      "type": "axe",
+                      "description": "#/admin/leitos: 25 regras aprovadas, 0 violações"
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1413,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-04T18:12:32.451Z",
+                      "annotations": [
+                        {
+                          "type": "axe",
+                          "description": "#/admin/leitos: 25 regras aprovadas, 0 violações"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a9de76e615354624f719-36466c6d51ced6b79145",
+              "file": "acessibilidade/wcag.spec.js",
+              "line": 30,
+              "column": 7
+            },
+            {
+              "title": "admin #/admin/cadastros",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [
+                    {
+                      "type": "axe",
+                      "description": "#/admin/cadastros: 30 regras aprovadas, 0 violações"
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1305,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-04T18:12:33.874Z",
+                      "annotations": [
+                        {
+                          "type": "axe",
+                          "description": "#/admin/cadastros: 30 regras aprovadas, 0 violações"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a9de76e615354624f719-093d14d5bde7b651980f",
+              "file": "acessibilidade/wcag.spec.js",
+              "line": 30,
+              "column": 7
+            },
+            {
+              "title": "admin #/admin/relatorios",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [
+                    {
+                      "type": "axe",
+                      "description": "#/admin/relatorios: 27 regras aprovadas, 0 violações"
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1321,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-04T18:12:35.189Z",
+                      "annotations": [
+                        {
+                          "type": "axe",
+                          "description": "#/admin/relatorios: 27 regras aprovadas, 0 violações"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a9de76e615354624f719-ac695a3c47c6a6bebd31",
+              "file": "acessibilidade/wcag.spec.js",
+              "line": 30,
+              "column": 7
+            },
+            {
+              "title": "admin #/admin/auditoria",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [
+                    {
+                      "type": "axe",
+                      "description": "#/admin/auditoria: 28 regras aprovadas, 0 violações"
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1319,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-04T18:12:36.520Z",
+                      "annotations": [
+                        {
+                          "type": "axe",
+                          "description": "#/admin/auditoria: 28 regras aprovadas, 0 violações"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a9de76e615354624f719-788dabb26ed9ce1928c5",
+              "file": "acessibilidade/wcag.spec.js",
+              "line": 30,
+              "column": 7
+            },
+            {
+              "title": "modo alto contraste",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [
+                    {
+                      "type": "axe",
+                      "description": "alto contraste: 28 regras aprovadas, 0 violações"
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1388,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-04T18:12:37.853Z",
+                      "annotations": [
+                        {
+                          "type": "axe",
+                          "description": "alto contraste: 28 regras aprovadas, 0 violações"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a9de76e615354624f719-c38adeabdf62443d7b67",
+              "file": "acessibilidade/wcag.spec.js",
+              "line": 37,
+              "column": 3
+            },
+            {
+              "title": "diálogo modal aberto",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [
+                    {
+                      "type": "axe",
+                      "description": "modal de cancelamento: 23 regras aprovadas, 0 violações"
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1085,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-04T18:12:39.267Z",
+                      "annotations": [
+                        {
+                          "type": "axe",
+                          "description": "modal de cancelamento: 23 regras aprovadas, 0 violações"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a9de76e615354624f719-b1eab103ee55739344a8",
+              "file": "acessibilidade/wcag.spec.js",
+              "line": 42,
+              "column": 3
+            }
+          ]
+        },
+        {
+          "title": "Navegação por teclado",
+          "file": "acessibilidade/wcag.spec.js",
+          "line": 50,
+          "column": 6,
+          "specs": [
+            {
+              "title": "CT-29 link \"Pular para o conteúdo\" é o primeiro foco da página",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 345,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-04T18:12:40.361Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a9de76e615354624f719-60f1cb7914d05fe37fa4",
+              "file": "acessibilidade/wcag.spec.js",
+              "line": 51,
+              "column": 3
+            },
+            {
+              "title": "CT-30 login completo apenas com teclado",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 442,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-04T18:12:40.717Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a9de76e615354624f719-076257072a938eac166d",
+              "file": "acessibilidade/wcag.spec.js",
+              "line": 57,
+              "column": 3
+            },
+            {
+              "title": "CT-31 modal prende o foco, fecha com Esc e devolve o foco ao botão de origem",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 543,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-04T18:12:41.167Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a9de76e615354624f719-925d3f6e01d5180a5ab3",
+              "file": "acessibilidade/wcag.spec.js",
+              "line": 69,
+              "column": 3
+            },
+            {
+              "title": "CT-32 ao navegar, o foco vai para o título da nova página",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 426,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-04T18:12:41.719Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a9de76e615354624f719-f1b75079b2efb47d7d0b",
+              "file": "acessibilidade/wcag.spec.js",
+              "line": 83,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "e2e/admin-seguranca.spec.js",
+      "file": "e2e/admin-seguranca.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Administração e segurança",
+          "file": "e2e/admin-seguranca.spec.js",
+          "line": 5,
+          "column": 6,
+          "specs": [
+            {
+              "title": "CT-22 interna paciente em leito livre e registra alta",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 896,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-04T18:12:42.164Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "3c75472d5b6b0c9a8806-d4ec936a2d0ae4e8334d",
+              "file": "e2e/admin-seguranca.spec.js",
+              "line": 8,
+              "column": 3
+            },
+            {
+              "title": "CT-23 cadastra novo profissional",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 719,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-04T18:12:43.071Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "3c75472d5b6b0c9a8806-983ed68354cab15cc161",
+              "file": "e2e/admin-seguranca.spec.js",
+              "line": 21,
+              "column": 3
+            },
+            {
+              "title": "CT-24 filtro por unidade altera os indicadores (multiunidade)",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 472,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-04T18:12:43.804Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "3c75472d5b6b0c9a8806-d0cfc3fb1a95b5fc2bfb",
+              "file": "e2e/admin-seguranca.spec.js",
+              "line": 33,
+              "column": 3
+            },
+            {
+              "title": "CT-25 exporta relatório financeiro em CSV",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 497,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-04T18:12:44.290Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "3c75472d5b6b0c9a8806-eb460e679252146f8007",
+              "file": "e2e/admin-seguranca.spec.js",
+              "line": 40,
+              "column": 3
+            },
+            {
+              "title": "CT-26 auditoria registra login e ações sensíveis",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 559,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-04T18:12:44.800Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "3c75472d5b6b0c9a8806-96393b2c3885153e129e",
+              "file": "e2e/admin-seguranca.spec.js",
+              "line": 49,
+              "column": 3
+            },
+            {
+              "title": "CT-27 conteúdo malicioso é escapado (proteção contra XSS)",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 480,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-04T18:12:45.372Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "3c75472d5b6b0c9a8806-8565a9ec379c49d1fbcb",
+              "file": "e2e/admin-seguranca.spec.js",
+              "line": 57,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "e2e/autenticacao.spec.js",
+      "file": "e2e/autenticacao.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Autenticação e controle de acesso",
+          "file": "e2e/autenticacao.spec.js",
+          "line": 5,
+          "column": 6,
+          "specs": [
+            {
+              "title": "CT-01 login válido do paciente redireciona para o painel",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 410,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-04T18:12:45.863Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "4991e09c3da0d4a8dcf6-d2e7f6d7bac25889d06f",
+              "file": "e2e/autenticacao.spec.js",
+              "line": 6,
+              "column": 3
+            },
+            {
+              "title": "CT-02 senha incorreta exibe mensagem de erro e não autentica",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 468,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-04T18:12:46.282Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "4991e09c3da0d4a8dcf6-068d4cfac48f0baa52b9",
+              "file": "e2e/autenticacao.spec.js",
+              "line": 12,
+              "column": 3
+            },
+            {
+              "title": "CT-03 usuário não pode entrar com perfil diferente do seu",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 503,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-04T18:12:46.765Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "4991e09c3da0d4a8dcf6-106707cbe67218189428",
+              "file": "e2e/autenticacao.spec.js",
+              "line": 18,
+              "column": 3
+            },
+            {
+              "title": "CT-04 validação de campos obrigatórios no login",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 437,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-04T18:12:47.280Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "4991e09c3da0d4a8dcf6-7642d94f505989883b84",
+              "file": "e2e/autenticacao.spec.js",
+              "line": 23,
+              "column": 3
+            },
+            {
+              "title": "CT-05 rota protegida sem sessão redireciona ao login",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 373,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-04T18:12:47.733Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "4991e09c3da0d4a8dcf6-f8875504bfa2c3ba719a",
+              "file": "e2e/autenticacao.spec.js",
+              "line": 31,
+              "column": 3
+            },
+            {
+              "title": "CT-06 paciente não acessa área administrativa (RBAC)",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 441,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-04T18:12:48.121Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "4991e09c3da0d4a8dcf6-34f5d19c1211b9081ae1",
+              "file": "e2e/autenticacao.spec.js",
+              "line": 36,
+              "column": 3
+            },
+            {
+              "title": "CT-07 cadastro rejeita CPF inválido",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 294,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-04T18:12:48.576Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "4991e09c3da0d4a8dcf6-a95b046e7b4d60e01ada",
+              "file": "e2e/autenticacao.spec.js",
+              "line": 43,
+              "column": 3
+            },
+            {
+              "title": "CT-08 cadastro exige consentimento LGPD",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 284,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-04T18:12:48.885Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "4991e09c3da0d4a8dcf6-773ac07113e918229183",
+              "file": "e2e/autenticacao.spec.js",
+              "line": 50,
+              "column": 3
+            },
+            {
+              "title": "CT-09 cadastro válido permite login do novo paciente",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 591,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-04T18:12:49.180Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "4991e09c3da0d4a8dcf6-6b03a61b5b07685c6657",
+              "file": "e2e/autenticacao.spec.js",
+              "line": 56,
+              "column": 3
+            },
+            {
+              "title": "CT-10 logout encerra a sessão",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 720,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-04T18:12:49.782Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "4991e09c3da0d4a8dcf6-d67264ab9e14112073fd",
+              "file": "e2e/autenticacao.spec.js",
+              "line": 72,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "e2e/paciente.spec.js",
+      "file": "e2e/paciente.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Paciente",
+          "file": "e2e/paciente.spec.js",
+          "line": 5,
+          "column": 6,
+          "specs": [
+            {
+              "title": "CT-11 agenda consulta presencial e ela aparece na lista",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 693,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-04T18:12:50.526Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "5593d2b5933c2cb6a9e1-e671bdf8c7337065eaf9",
+              "file": "e2e/paciente.spec.js",
+              "line": 8,
+              "column": 3
+            },
+            {
+              "title": "CT-12 horário já ocupado aparece indisponível (sem conflito de agenda)",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 475,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-04T18:12:51.245Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "5593d2b5933c2cb6a9e1-8ea6476a7c957bbc20d0",
+              "file": "e2e/paciente.spec.js",
+              "line": 22,
+              "column": 3
+            },
+            {
+              "title": "CT-13 agendamento sem horário mostra erro de validação",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 509,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-04T18:12:51.749Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "5593d2b5933c2cb6a9e1-e7383023a2e97ba1c6f0",
+              "file": "e2e/paciente.spec.js",
+              "line": 31,
+              "column": 3
+            },
+            {
+              "title": "CT-14 cancela um agendamento futuro",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 588,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-04T18:12:52.273Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "5593d2b5933c2cb6a9e1-cd387504a71007abc2d2",
+              "file": "e2e/paciente.spec.js",
+              "line": 38,
+              "column": 3
+            },
+            {
+              "title": "CT-15 visualiza histórico clínico e receita digital",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 525,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-04T18:12:52.872Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "5593d2b5933c2cb6a9e1-a0505b56afb61fd7883b",
+              "file": "e2e/paciente.spec.js",
+              "line": 47,
+              "column": 3
+            },
+            {
+              "title": "CT-16 portabilidade de dados (LGPD art. 18) gera arquivo JSON",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 428,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-04T18:12:53.416Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "5593d2b5933c2cb6a9e1-af0012b494c9a38738f2",
+              "file": "e2e/paciente.spec.js",
+              "line": 55,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "e2e/profissional-telemedicina.spec.js",
+      "file": "e2e/profissional-telemedicina.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Profissional de saúde e telemedicina",
+          "file": "e2e/profissional-telemedicina.spec.js",
+          "line": 5,
+          "column": 6,
+          "specs": [
+            {
+              "title": "CT-17 registra evolução no prontuário",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 514,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-04T18:12:53.865Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "30efa6a1ce76e1cf2a47-9bff720c051849436cff",
+              "file": "e2e/profissional-telemedicina.spec.js",
+              "line": 6,
+              "column": 3
+            },
+            {
+              "title": "CT-18 CID-10 em formato inválido é rejeitado",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 554,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-04T18:12:54.389Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "30efa6a1ce76e1cf2a47-aef711184f667c3e3905",
+              "file": "e2e/profissional-telemedicina.spec.js",
+              "line": 16,
+              "column": 3
+            },
+            {
+              "title": "CT-19 receita digital exige assinatura e notifica o paciente",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 782,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-04T18:12:54.951Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "30efa6a1ce76e1cf2a47-bece1f9f0baf4fd76152",
+              "file": "e2e/profissional-telemedicina.spec.js",
+              "line": 24,
+              "column": 3
+            },
+            {
+              "title": "CT-20 teleconsulta: conectar, registrar e encerrar marca como realizada",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2022,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-04T18:12:55.744Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "30efa6a1ce76e1cf2a47-94d09b43b257207872d6",
+              "file": "e2e/profissional-telemedicina.spec.js",
+              "line": 39,
+              "column": 3
+            },
+            {
+              "title": "CT-21 paciente não acessa sala de teleconsulta de outra pessoa",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 433,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-04T18:12:57.776Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "30efa6a1ce76e1cf2a47-182c482711daaf3d00a1",
+              "file": "e2e/profissional-telemedicina.spec.js",
+              "line": 52,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "acessibilidade/responsivo.spec.js",
+      "file": "acessibilidade/responsivo.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Responsividade em dispositivo móvel",
+          "file": "acessibilidade/responsivo.spec.js",
+          "line": 7,
+          "column": 6,
+          "specs": [
+            {
+              "title": "CT-33 sem rolagem horizontal em #/paciente",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile-chromium",
+                  "projectName": "mobile-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 626,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-04T18:12:58.820Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "0b84f68fcb9d22f102a8-e4f33b11797b513a89a6",
+              "file": "acessibilidade/responsivo.spec.js",
+              "line": 9,
+              "column": 5
+            },
+            {
+              "title": "CT-33 sem rolagem horizontal em #/paciente/agendar",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile-chromium",
+                  "projectName": "mobile-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 554,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-04T18:12:59.600Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "0b84f68fcb9d22f102a8-a8a994b72e9480e5daf3",
+              "file": "acessibilidade/responsivo.spec.js",
+              "line": 9,
+              "column": 5
+            },
+            {
+              "title": "CT-33 sem rolagem horizontal em #/profissional",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile-chromium",
+                  "projectName": "mobile-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 514,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-04T18:13:00.173Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "0b84f68fcb9d22f102a8-87ba3f857ccfcdb5816f",
+              "file": "acessibilidade/responsivo.spec.js",
+              "line": 9,
+              "column": 5
+            },
+            {
+              "title": "CT-33 sem rolagem horizontal em #/admin/leitos",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile-chromium",
+                  "projectName": "mobile-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 584,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-04T18:13:00.697Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "0b84f68fcb9d22f102a8-88a381d05d615f3af3ac",
+              "file": "acessibilidade/responsivo.spec.js",
+              "line": 9,
+              "column": 5
+            },
+            {
+              "title": "CT-33 sem rolagem horizontal em #/admin/relatorios",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile-chromium",
+                  "projectName": "mobile-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 578,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-04T18:13:01.293Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "0b84f68fcb9d22f102a8-829bb1266cb3b136d9fe",
+              "file": "acessibilidade/responsivo.spec.js",
+              "line": 9,
+              "column": 5
+            },
+            {
+              "title": "CT-34 menu lateral abre pelo botão e fecha com Esc",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile-chromium",
+                  "projectName": "mobile-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 585,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-04T18:13:01.886Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "0b84f68fcb9d22f102a8-6d12c8756ee7d353e2f7",
+              "file": "acessibilidade/responsivo.spec.js",
+              "line": 17,
+              "column": 3
+            },
+            {
+              "title": "CT-35 texto ampliado em 150% continua sem rolagem horizontal",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile-chromium",
+                  "projectName": "mobile-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 628,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-04T18:13:02.485Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "0b84f68fcb9d22f102a8-aab732359dfc6c47aee6",
+              "file": "acessibilidade/responsivo.spec.js",
+              "line": 26,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-04T18:12:14.178Z",
+    "duration": 49012.703,
+    "expected": 56,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

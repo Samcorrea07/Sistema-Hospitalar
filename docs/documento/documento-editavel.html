@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<title>Projeto Multidisciplinar — SGHSS VidaPlus</title>
+<style>
+  @page { size: A4; margin: 30mm 20mm 20mm 30mm; @top-right { content: counter(page); font: 10pt "Liberation Sans", Arial, sans-serif; } }
+  @page semnumero { @top-right { content: none; } }
+  .capa, #sumario { page: semnumero; }
+  @media screen { body { max-width: 170mm; margin: 0 auto; padding: 20px; background: #fff; } .aviso-edicao { position: sticky; top: 0; z-index: 9; background: #fff8c4; border: 2px solid #e0b800; padding: 10px 14px; margin-bottom: 24px; font-size: 11pt; text-align: left; } .aviso-edicao p { text-indent: 0; margin: 0 0 4px; } .preencher { outline: 1px dashed #b38f00; cursor: text; } .secao, .capa { border-bottom: 2px dashed #ccc; padding-bottom: 30px; margin-bottom: 30px; } }
+  @media print { .aviso-edicao { display: none; } .preencher { background: none !important; font-weight: inherit; } }
+  :root { --cor: #0b5f6e; }
+  * { box-sizing: border-box; }
+  body { font-family: "Liberation Sans", Arial, sans-serif; font-size: 12pt; line-height: 1.5; color: #111; margin: 0; text-align: justify; hyphens: auto; }
+  h1, h2, h3, h4 { text-align: left; font-weight: 700; line-height: 1.3; break-after: avoid; page-break-after: avoid; }
+  h1 { font-size: 14pt; text-transform: uppercase; margin: 0 0 14pt; color: var(--cor); }
+  h2 { font-size: 12.5pt; margin: 16pt 0 6pt; }
+  h3 { font-size: 12pt; margin: 12pt 0 4pt; font-weight: 700; font-style: italic; }
+  p { margin: 0 0 8pt; text-indent: 1.25cm; }
+  p.ni, li p, td p, figcaption p, .fonte { text-indent: 0; }
+  .secao { break-before: page; page-break-before: always; }
+  ul, ol { margin: 0 0 8pt; padding-left: 1.4cm; }
+  li { margin-bottom: 3pt; }
+  code { font-family: "DejaVu Sans Mono", monospace; font-size: 9.5pt; background: #f1f4f6; padding: 0 3px; border-radius: 3px; }
+  pre { font-family: "DejaVu Sans Mono", monospace; font-size: 8.6pt; line-height: 1.35; background: #f5f7f9; border: 1px solid #d5dee5; border-left: 4px solid var(--cor); padding: 8pt 10pt; white-space: pre-wrap; text-align: left; margin: 4pt 0 10pt; break-inside: avoid; }
+  table { width: 100%; border-collapse: collapse; font-size: 9.5pt; line-height: 1.3; margin: 4pt 0 4pt; text-align: left; }
+  th, td { border: 1px solid #9aa7b1; padding: 4pt 5pt; vertical-align: top; }
+  th { background: #e3f1f3; font-weight: 700; }
+  tr { break-inside: avoid; }
+  td:first-child { white-space: nowrap; }
+  .tab-titulo, figcaption { font-size: 10pt; text-align: left; margin: 10pt 0 2pt; }
+  .tab-titulo { font-weight: 700; }
+  .fonte { font-size: 9pt; margin: 2pt 0 12pt; text-align: left; }
+  figure { margin: 8pt 0 12pt; text-align: center; break-inside: avoid; }
+  figure img { max-width: 100%; border: 1px solid #c9d3da; }
+  figure img.sem-borda { border: 0; }
+  figcaption { font-weight: 700; text-align: left; }
+  figcaption + img { margin-top: 2pt; }
+  .preencher { background: #fff176; padding: 0 3px; font-weight: 700; }
+  .destaque { border: 1px solid var(--cor); background: #f1f8f9; padding: 8pt 12pt; margin: 8pt 0 12pt; text-align: left; break-inside: avoid; }
+  .destaque p { text-indent: 0; margin-bottom: 4pt; }
+  .duas { display: flex; gap: 10pt; }
+  .duas figure { flex: 1; }
+  .tres { display: flex; gap: 8pt; }
+  .tres figure { flex: 1; }
+
+  /* Capa */
+  .capa { height: 247mm; display: flex; flex-direction: column; justify-content: space-between; text-align: center; text-transform: uppercase; font-weight: 700; }
+  .capa p { text-indent: 0; margin: 0; }
+  .capa .titulo { font-size: 15pt; line-height: 1.4; }
+  .capa .sub { text-transform: none; font-weight: 400; font-size: 12pt; margin-top: 10pt; }
+  .capa .dados { text-transform: none; font-weight: 400; text-align: left; margin-left: 50%; font-size: 11pt; line-height: 1.6; }
+
+  /* Sumário */
+  .sumario { list-style: none; padding: 0; margin: 0; }
+  .sumario li { display: flex; align-items: baseline; margin: 0 0 1pt; line-height: 1.35; font-size: 11.5pt; }
+  .sumario li .t { white-space: nowrap; }
+  .sumario li .pont { flex: 1; border-bottom: 1px dotted #666; margin: 0 4pt; transform: translateY(-3pt); }
+  .sumario li.n1 { font-weight: 700; text-transform: uppercase; margin-top: 5pt; }
+  .sumario li.n2 { padding-left: 1cm; }
+</style>
+</head>
+<body>
+<div class="aviso-edicao"><p><strong>Como finalizar o documento:</strong></p>
+<p>1. Clique em cada campo destacado em amarelo (capa e seção 4.1) e digite os dados reais: nome, RU, curso, polo, semestre, professor, cidade e os links do GitHub.</p>
+<p>2. Pressione <strong>Ctrl+P</strong> (ou Cmd+P no Mac), escolha <strong>Salvar como PDF</strong>, papel <strong>A4</strong>, margens <strong>Padrão</strong> e marque <strong>Gráficos de plano de fundo</strong>. Desmarque “Cabeçalhos e rodapés”.</p>
+<p>3. Salve como <code>Projeto_RU_NomeDoAluno.pdf</code>. Use o Google Chrome ou o Microsoft Edge. Este aviso não aparece no PDF.</p></div>
+
+<!-- ============================ CAPA ============================ -->
+<section class="capa">
+  <div>
+    <p>Centro Universitário Internacional UNINTER</p>
+    <p style="margin-top:6pt"><span class="preencher" contenteditable="true" spellcheck="false">[Nome do curso]</span></p>
+    <p style="margin-top:6pt">Disciplina: Projeto Multidisciplinar</p>
+  </div>
+  <div>
+    <p><span class="preencher" contenteditable="true" spellcheck="false">[Nome completo do aluno]</span></p>
+    <p style="text-transform:none;font-weight:400;margin-top:4pt">RU: <span class="preencher" contenteditable="true" spellcheck="false">[RU]</span></p>
+  </div>
+  <div>
+    <p class="titulo">SGHSS VidaPlus: Sistema de Gestão Hospitalar e de Serviços de Saúde</p>
+    <p class="sub">Projeto Multidisciplinar com ênfase em Desenvolvimento Front-end: protótipo responsivo e acessível</p>
+  </div>
+  <div class="dados">
+    <p>Polo de apoio: <span class="preencher" contenteditable="true" spellcheck="false">[Polo]</span></p>
+    <p>Semestre: <span class="preencher" contenteditable="true" spellcheck="false">[Semestre/ano]</span></p>
+    <p>Professor: <span class="preencher" contenteditable="true" spellcheck="false">[Nome do professor]</span></p>
+  </div>
+  <div>
+    <p><span class="preencher" contenteditable="true" spellcheck="false">[Cidade]</span></p>
+    <p>2026</p>
+  </div>
+</section>
+
+<!-- ============================ SUMÁRIO ============================ -->
+<section class="secao" id="sumario">
+  <h1 style="text-align:center">Sumário</h1>
+  <ul class="sumario" id="toc"><li class="n1"><span class="t">1 Introdução</span><span class="pont"></span><span>3</span></li><li class="n2"><span class="t">1.1 Contexto do estudo de caso</span><span class="pont"></span><span>3</span></li><li class="n2"><span class="t">1.2 Objetivos</span><span class="pont"></span><span>3</span></li><li class="n2"><span class="t">1.3 Principais usuários</span><span class="pont"></span><span>4</span></li><li class="n2"><span class="t">1.4 Relevância do sistema</span><span class="pont"></span><span>4</span></li><li class="n2"><span class="t">1.5 Escopo do trabalho</span><span class="pont"></span><span>4</span></li><li class="n1"><span class="t">2 Análise e requisitos</span><span class="pont"></span><span>5</span></li><li class="n2"><span class="t">2.1 Requisitos funcionais</span><span class="pont"></span><span>5</span></li><li class="n2"><span class="t">2.2 Requisitos não funcionais</span><span class="pont"></span><span>7</span></li><li class="n2"><span class="t">2.3 Regras de negócio</span><span class="pont"></span><span>8</span></li><li class="n2"><span class="t">2.4 Diagrama de casos de uso</span><span class="pont"></span><span>8</span></li><li class="n1"><span class="t">3 Modelagem e arquitetura (front-end)</span><span class="pont"></span><span>10</span></li><li class="n2"><span class="t">3.1 Tecnologias e justificativas</span><span class="pont"></span><span>10</span></li><li class="n2"><span class="t">3.2 Arquitetura de componentes</span><span class="pont"></span><span>10</span></li><li class="n2"><span class="t">3.3 Mapa de navegação</span><span class="pont"></span><span>11</span></li><li class="n2"><span class="t">3.4 Wireframes</span><span class="pont"></span><span>11</span></li><li class="n2"><span class="t">3.5 Design system e design responsivo</span><span class="pont"></span><span>15</span></li><li class="n2"><span class="t">3.6 Acessibilidade (WCAG 2.1 AA)</span><span class="pont"></span><span>16</span></li><li class="n2"><span class="t">3.7 Segurança e LGPD na interface</span><span class="pont"></span><span>17</span></li><li class="n2"><span class="t">3.8 Modelagem dinâmica</span><span class="pont"></span><span>18</span></li><li class="n1"><span class="t">4 Implementação (prototipagem)</span><span class="pont"></span><span>21</span></li><li class="n2"><span class="t">4.1 Repositório e publicação</span><span class="pont"></span><span>21</span></li><li class="n2"><span class="t">4.2 Estrutura do projeto</span><span class="pont"></span><span>21</span></li><li class="n2"><span class="t">4.3 Telas implementadas</span><span class="pont"></span><span>21</span></li><li class="n2"><span class="t">4.4 Trechos de código relevantes</span><span class="pont"></span><span>31</span></li><li class="n1"><span class="t">5 Plano de testes</span><span class="pont"></span><span>33</span></li><li class="n2"><span class="t">5.1 Estratégia e ferramentas</span><span class="pont"></span><span>33</span></li><li class="n2"><span class="t">5.2 Casos de teste e resultados</span><span class="pont"></span><span>33</span></li><li class="n2"><span class="t">5.3 Critérios de aceitação</span><span class="pont"></span><span>35</span></li><li class="n2"><span class="t">5.4 Roteiros para testes de carga, segurança e usabilidade</span><span class="pont"></span><span>36</span></li><li class="n1"><span class="t">6 Conclusão</span><span class="pont"></span><span>37</span></li><li class="n1"><span class="t">Referências</span><span class="pont"></span><span>38</span></li><li class="n1"><span class="t">Anexo A – Resultado da execução dos testes automatizados</span><span class="pont"></span><span>40</span></li><li class="n1"><span class="t">Anexo B – Telas complementares</span><span class="pont"></span><span>41</span></li></ul>
+</section>
+
+<!-- ============================ 1 INTRODUÇÃO ============================ -->
+<section class="secao">
+<h1 id="s1" data-toc="1">1 Introdução</h1>
+
+<h2 id="s1-1" data-toc="2">1.1 Contexto do estudo de caso</h2>
+<p>A VidaPlus é uma instituição de saúde que administra hospitais, clínicas de bairro, laboratórios e equipes de <em>home care</em>. Cada frente funciona hoje com processos e controles próprios, o que fragmenta a informação do paciente. Um exame feito no laboratório não aparece de imediato para o médico da clínica, a ocupação de leitos não é visível em tempo real para a gestão e os registros de quem acessou dados sensíveis ficam espalhados. Para resolver esse cenário, a instituição precisa de um <strong>Sistema de Gestão Hospitalar e de Serviços de Saúde (SGHSS)</strong> que centralize cadastro e atendimento de pacientes, gestão de profissionais, administração hospitalar, telemedicina, segurança e conformidade com a Lei Geral de Proteção de Dados (LGPD).</p>
+<p>Este trabalho apresenta o projeto do SGHSS com ênfase na trilha de <strong>Desenvolvimento Front-end</strong>. Isso inclui a análise de requisitos, a modelagem da interface (wireframes, arquitetura de componentes, design system, acessibilidade e responsividade), a implementação de um protótipo funcional publicado na web e um plano de testes com execução automatizada.</p>
+
+<h2 id="s1-2" data-toc="2">1.2 Objetivos</h2>
+<p><strong>Objetivo geral:</strong> projetar e prototipar a camada de interface do SGHSS VidaPlus, entregando uma aplicação web funcional, responsiva e acessível que atenda aos requisitos de pacientes, profissionais de saúde e administradores, e que esteja preparada para integração com um back-end seguro.</p>
+<p class="ni"><strong>Objetivos específicos:</strong></p>
+<ul>
+  <li>levantar e documentar os requisitos funcionais e não funcionais a partir do estudo de caso;</li>
+  <li>modelar os fluxos de uso com UML (casos de uso, sequência, estados, componentes e implantação);</li>
+  <li>desenhar wireframes de baixa fidelidade e definir um design system com contraste adequado;</li>
+  <li>implementar um protótipo navegável com três perfis de acesso e todas as funcionalidades principais;</li>
+  <li>aplicar boas práticas de segurança no front-end e princípios da LGPD na interface;</li>
+  <li>atender às diretrizes WCAG 2.1 nível AA e validar com testes automatizados;</li>
+  <li>planejar e executar testes funcionais, de segurança, de acessibilidade e de responsividade.</li>
+</ul>
+
+<h2 id="s1-3" data-toc="2">1.3 Principais usuários</h2>
+<table>
+  <tr><th style="width:22%">Usuário</th><th>Necessidades principais</th></tr>
+  <tr><td><strong>Paciente</strong></td><td>Cadastrar-se, agendar e cancelar consultas e exames, receber lembretes, acessar o histórico e as receitas, participar de teleconsultas e controlar o uso dos próprios dados.</td></tr>
+  <tr><td><strong>Profissional de saúde</strong> (médico, enfermeiro, técnico)</td><td>Ver a agenda do dia, consultar o histórico do paciente com alertas (por exemplo, alergias), registrar evoluções, emitir receitas digitais e atender por telemedicina.</td></tr>
+  <tr><td><strong>Administrador</strong></td><td>Acompanhar indicadores por unidade, controlar leitos e internações, gerenciar cadastros, monitorar suprimentos, gerar relatórios financeiros e auditar acessos.</td></tr>
+</table>
+<p class="fonte">Fonte: o autor (2026).</p>
+
+<h2 id="s1-4" data-toc="2">1.4 Relevância do sistema</h2>
+<p>Sistemas de saúde são de alta criticidade. Um erro de interface pode levar a uma prescrição para um paciente alérgico, a um agendamento em conflito ou à exposição de um dado sensível. Por isso, a qualidade da camada de apresentação vai além da estética. Ela envolve prevenir erros (validações e confirmações), dar visibilidade às informações críticas (alertas de alergia, ocupação de leitos), tornar o sistema acessível a pessoas idosas e com deficiência, e oferecer transparência no tratamento de dados, como exige a LGPD. A telemedicina, regulamentada pela Resolução CFM nº 2.314/2022, amplia o alcance da instituição, mas exige uma interface simples o suficiente para pacientes com pouca familiaridade tecnológica.</p>
+
+<h2 id="s1-5" data-toc="2">1.5 Escopo do trabalho</h2>
+<p>Como a ênfase é Front-end, o protótipo implementa todas as telas e regras de interface, enquanto a camada de dados é simulada no navegador por um módulo de serviço (<code>store.js</code>) com dados fictícios. Esse módulo foi escrito para ser substituído por chamadas a uma API REST sem mudanças nas telas. Os pontos que dependem do servidor, como criptografia em repouso, emissão de tokens JWT, sinalização WebRTC e assinatura ICP-Brasil real, aparecem na arquitetura como integrações futuras.</p>
+</section>
+
+<!-- ============================ 2 ANÁLISE E REQUISITOS ============================ -->
+<section class="secao">
+<h1 id="s2" data-toc="1">2 Análise e requisitos</h1>
+<p>Os requisitos foram extraídos do estudo de caso e refinados com base nas legislações aplicáveis (LGPD, Lei nº 13.787/2018 sobre prontuário eletrônico e Resolução CFM nº 2.314/2022 sobre telemedicina) e em boas práticas de usabilidade. Cada requisito recebeu um identificador e uma prioridade. Nas tabelas, a coluna “Tela” indica onde ele foi implementado no protótipo.</p>
+
+<h2 id="s2-1" data-toc="2">2.1 Requisitos funcionais</h2>
+<p class="tab-titulo">Tabela 1 – Requisitos funcionais</p>
+<table>
+  <tr><th style="width:8%">ID</th><th>Descrição</th><th style="width:15%">Ator</th><th style="width:9%">Prior.</th><th style="width:22%">Tela (rota)</th></tr>
+  <tr><td>RF01</td><td>Permitir o autocadastro do paciente com validação de CPF (dígitos verificadores), senha forte e aceite da política de privacidade.</td><td>Paciente</td><td>Alta</td><td><code>#/cadastro</code></td></tr>
+  <tr><td>RF02</td><td>Autenticar usuários por e-mail e senha, com seleção de perfil.</td><td>Todos</td><td>Alta</td><td><code>#/login</code></td></tr>
+  <tr><td>RF03</td><td>Permitir ao paciente atualizar telefone, e-mail e endereço.</td><td>Paciente</td><td>Média</td><td><code>#/paciente/dados</code></td></tr>
+  <tr><td>RF04</td><td>Agendar consulta presencial, teleconsulta ou exame, escolhendo especialidade, profissional, unidade, data e horário livre.</td><td>Paciente</td><td>Alta</td><td><code>#/paciente/agendar</code></td></tr>
+  <tr><td>RF05</td><td>Cancelar agendamento futuro, com motivo opcional, liberando o horário.</td><td>Paciente</td><td>Alta</td><td><code>#/paciente/consultas</code></td></tr>
+  <tr><td>RF06</td><td>Exibir notificações (lembretes, resultados, novas receitas) e marcá-las como lidas.</td><td>Paciente</td><td>Média</td><td><code>#/paciente</code></td></tr>
+  <tr><td>RF07</td><td>Exibir histórico clínico em linha do tempo e as receitas digitais.</td><td>Paciente</td><td>Alta</td><td><code>#/paciente/historico</code></td></tr>
+  <tr><td>RF08</td><td>Disponibilizar a sala de teleconsulta no dia do atendimento, com áudio, vídeo e chat.</td><td>Paciente, Profissional</td><td>Alta</td><td><code>#/teleconsulta/:id</code></td></tr>
+  <tr><td>RF09</td><td>Permitir ao titular exportar seus dados, revogar consentimento e ver quem acessou suas informações.</td><td>Paciente</td><td>Alta</td><td><code>#/paciente/dados</code></td></tr>
+  <tr><td>RF10</td><td>Exibir a agenda diária do profissional com indicadores e seleção de data.</td><td>Profissional</td><td>Alta</td><td><code>#/profissional</code></td></tr>
+  <tr><td>RF11</td><td>Buscar pacientes por nome ou pelos quatro últimos dígitos do CPF.</td><td>Profissional</td><td>Média</td><td><code>#/profissional/pacientes</code></td></tr>
+  <tr><td>RF12</td><td>Registrar evolução no prontuário (tipo, título, descrição e CID-10 validado).</td><td>Profissional</td><td>Alta</td><td><code>#/profissional/prontuario/:id</code></td></tr>
+  <tr><td>RF13</td><td>Emitir receita digital com um ou mais medicamentos, assinatura digital e envio ao paciente.</td><td>Profissional</td><td>Alta</td><td><code>#/profissional/prontuario/:id</code></td></tr>
+  <tr><td>RF14</td><td>Conduzir a teleconsulta e registrar a anotação no prontuário ao encerrar.</td><td>Profissional</td><td>Alta</td><td><code>#/teleconsulta/:id</code></td></tr>
+  <tr><td>RF15</td><td>Marcar atendimento presencial como concluído.</td><td>Profissional</td><td>Média</td><td><code>#/profissional</code></td></tr>
+  <tr><td>RF16</td><td>Listar, filtrar e incluir profissionais; ativar e desativar cadastros; listar pacientes.</td><td>Administrador</td><td>Alta</td><td><code>#/admin/cadastros</code></td></tr>
+  <tr><td>RF17</td><td>Controlar leitos: internar, dar alta e liberar após higienização ou manutenção.</td><td>Administrador</td><td>Alta</td><td><code>#/admin/leitos</code></td></tr>
+  <tr><td>RF18</td><td>Exibir painel com indicadores de ocupação, atendimentos, pacientes e estoque crítico.</td><td>Administrador</td><td>Alta</td><td><code>#/admin</code></td></tr>
+  <tr><td>RF19</td><td>Gerar relatórios financeiros e de atendimentos, com exportação em CSV.</td><td>Administrador</td><td>Média</td><td><code>#/admin/relatorios</code></td></tr>
+  <tr><td>RF20</td><td>Sinalizar suprimentos abaixo do estoque mínimo e gerar pedido de reposição.</td><td>Administrador</td><td>Média</td><td><code>#/admin</code></td></tr>
+  <tr><td>RF21</td><td>Consultar, filtrar e exportar os registros de auditoria.</td><td>Administrador</td><td>Alta</td><td><code>#/admin/auditoria</code></td></tr>
+  <tr><td>RF22</td><td>Alternar a unidade de referência (ou todas) para filtrar os dados exibidos.</td><td>Administrador</td><td>Média</td><td>Cabeçalho</td></tr>
+</table>
+<p class="fonte">Fonte: o autor (2026).</p>
+
+<h2 id="s2-2" data-toc="2">2.2 Requisitos não funcionais</h2>
+<p class="tab-titulo">Tabela 2 – Requisitos não funcionais e estratégia de atendimento</p>
+<table>
+  <tr><th style="width:8%">ID</th><th style="width:17%">Categoria</th><th style="width:33%">Requisito</th><th>Como é atendido no front-end (e o que cabe ao back-end)</th></tr>
+  <tr><td>RNF01</td><td>Segurança</td><td>Criptografia de dados sensíveis em trânsito e em repouso.</td><td>Publicação somente em HTTPS (GitHub Pages força TLS); nenhum dado sensível em URL. Back-end: TLS 1.3 e AES-256 em repouso.</td></tr>
+  <tr><td>RNF02</td><td>Segurança</td><td>Controle de acesso por perfil.</td><td>Guarda de rotas (RBAC) e menus distintos por perfil; acesso indevido é bloqueado e auditado. Back-end valida cada requisição.</td></tr>
+  <tr><td>RNF03</td><td>Segurança</td><td>Registro de logs e auditoria.</td><td>Ações sensíveis (login, acesso a prontuário, receita, internação, exportação) geram registro com usuário, perfil, data/hora e IP.</td></tr>
+  <tr><td>RNF04</td><td>Compliance</td><td>Conformidade com a LGPD.</td><td>Consentimento explícito no cadastro, política acessível, minimização (CPF mascarado), portabilidade, revogação e transparência de acessos.</td></tr>
+  <tr><td>RNF05</td><td>Segurança</td><td>Sessão com expiração.</td><td>Sessão expira após 15 minutos sem interação; logout explícito com confirmação.</td></tr>
+  <tr><td>RNF06</td><td>Segurança</td><td>Proteção contra injeção de scripts (XSS).</td><td>Todo dado dinâmico passa por função de escape de HTML antes de ser renderizado.</td></tr>
+  <tr><td>RNF07</td><td>Escalabilidade</td><td>Suportar múltiplas unidades.</td><td>Modelo de dados com <code>unidadeId</code>; seletor de unidade; front-end estático servido por CDN, que escala horizontalmente sem custo de servidor.</td></tr>
+  <tr><td>RNF08</td><td>Desempenho</td><td>Resposta rápida em consultas críticas.</td><td>Aplicação sem frameworks: cerca de 149 KB no total (38 KB compactados com gzip); navegação sem recarregar a página; meta de menos de 1 s para renderizar cada tela.</td></tr>
+  <tr><td>RNF09</td><td>Acessibilidade</td><td>Interface conforme W3C/WCAG.</td><td>WCAG 2.1 nível AA: contraste ≥ 4,5:1, teclado, foco visível, rótulos, ARIA, alto contraste e ampliação de texto (seção 3.6).</td></tr>
+  <tr><td>RNF10</td><td>Usabilidade</td><td>Interface amigável e responsiva.</td><td>Abordagem mobile-first a partir de 320 px; tabelas viram cartões no celular; alvos de toque com no mínimo 44 px.</td></tr>
+  <tr><td>RNF11</td><td>Disponibilidade</td><td>Mínimo de 99,5%, com backups e logs.</td><td>Front-end em CDN (alta disponibilidade). Back-end: réplicas, backup diário, monitoramento e logs centralizados.</td></tr>
+  <tr><td>RNF12</td><td>Compatibilidade</td><td>Funcionar nos navegadores atuais.</td><td>HTML5, CSS3 e JavaScript ES2017, compatíveis com Chrome, Edge, Firefox e Safari recentes.</td></tr>
+  <tr><td>RNF13</td><td>Manutenibilidade</td><td>Código organizado e documentado.</td><td>Módulos separados por responsabilidade (dados, serviço, UI, telas), comentários e testes automatizados.</td></tr>
+</table>
+<p class="fonte">Fonte: o autor (2026).</p>
+
+<h2 id="s2-3" data-toc="2">2.3 Regras de negócio</h2>
+<ul>
+  <li><strong>RN01:</strong> um profissional não pode ter dois agendamentos ativos na mesma data e horário. Horários ocupados e já passados aparecem desabilitados.</li>
+  <li><strong>RN02:</strong> não há atendimento aos domingos.</li>
+  <li><strong>RN03:</strong> somente agendamentos com status “agendada” podem ser cancelados.</li>
+  <li><strong>RN04:</strong> a sala de teleconsulta só é acessível ao paciente e ao profissional do agendamento.</li>
+  <li><strong>RN05:</strong> a receita digital exige ao menos um medicamento com posologia e a assinatura digital do profissional.</li>
+  <li><strong>RN06:</strong> o prontuário é somente leitura para o paciente e deve ser guardado por no mínimo 20 anos (Lei nº 13.787/2018), mesmo após a revogação de consentimentos opcionais.</li>
+  <li><strong>RN07:</strong> só é possível internar paciente em leito livre, e um paciente não pode ocupar dois leitos ao mesmo tempo.</li>
+  <li><strong>RN08:</strong> o CPF é exibido mascarado em todas as listagens (minimização de dados).</li>
+</ul>
+
+<h2 id="s2-4" data-toc="2">2.4 Diagrama de casos de uso</h2>
+<p>A Figura 1 apresenta os três atores e os quatorze casos de uso do sistema. Os casos “Autenticar com perfil” e “Registrar log de auditoria” são incluídos («include») por vários fluxos, o que reforça que segurança e rastreabilidade são transversais.</p>
+<figure><figcaption>Figura 1 – Diagrama de casos de uso do SGHSS VidaPlus</figcaption>
+<img class="sem-borda" src="../diagramas/casos-de-uso.png" style="width:100%" />
+<p class="fonte">Fonte: o autor (2026).</p></figure>
+
+<h3>Especificação do caso de uso UC02 – Agendar consulta ou exame</h3>
+<table>
+  <tr><th style="width:24%">Item</th><th>Descrição</th></tr>
+  <tr><td>Ator principal</td><td>Paciente</td></tr>
+  <tr><td>Pré-condições</td><td>Paciente autenticado com perfil “Paciente”.</td></tr>
+  <tr><td>Fluxo principal</td><td>1. O paciente acessa “Agendar”. 2. Escolhe o tipo (presencial, teleconsulta ou exame). 3. Escolhe a especialidade; o sistema lista os profissionais ativos dela. 4. Escolhe o profissional; o sistema lista as unidades em que ele atende (oculta para teleconsulta). 5. Escolhe a data; o sistema mostra os horários e desabilita os ocupados ou passados. 6. Seleciona um horário e clica em “Revisar e confirmar”. 7. O sistema exibe o resumo em um diálogo. 8. O paciente confirma; o sistema grava o agendamento, gera notificação e registro de auditoria e leva à lista de agendamentos.</td></tr>
+  <tr><td>Fluxos alternativos</td><td>FA1 – campos obrigatórios ausentes: o sistema exibe a mensagem junto ao campo e move o foco para o primeiro erro. FA2 – domingo: o sistema informa que não há atendimento. FA3 – horário ocupado durante a confirmação (concorrência): o sistema avisa e atualiza os horários.</td></tr>
+  <tr><td>Pós-condições</td><td>Agendamento com status “agendada”, notificação ao paciente e registro <code>AGENDAMENTO_CRIADO</code> na auditoria.</td></tr>
+  <tr><td>Regras</td><td>RN01, RN02</td></tr>
+</table>
+<p class="fonte">Fonte: o autor (2026).</p>
+</section>
+
+<!-- ============================ 3 MODELAGEM E ARQUITETURA ============================ -->
+<section class="secao">
+<h1 id="s3" data-toc="1">3 Modelagem e arquitetura (front-end)</h1>
+
+<h2 id="s3-1" data-toc="2">3.1 Tecnologias e justificativas</h2>
+<p>Optou-se por <strong>HTML5, CSS3 e JavaScript puro</strong> (sem frameworks), organizado como uma <em>Single Page Application</em> com roteamento por <em>hash</em>. A escolha considerou quatro fatores. O primeiro é a hospedagem: o projeto roda em qualquer servidor estático, inclusive o GitHub Pages, sem etapa de compilação. O segundo é o desempenho: a aplicação inteira tem cerca de 38 KB compactados, menos do que o núcleo de muitos frameworks. O terceiro é o controle sobre a acessibilidade, já que cada atributo ARIA e cada movimento de foco foi escrito de forma explícita. O quarto é didático: o roteador, o gerenciamento de estado e os componentes ficam visíveis no código e documentam conceitos que frameworks escondem. Para uma evolução em produção, a mesma arquitetura pode migrar para React ou Vue, já que as telas seguem o padrão <code>render()</code> + <code>montar()</code>, semelhante a componentes.</p>
+<p class="tab-titulo">Tabela 3 – Pilha tecnológica</p>
+<table>
+  <tr><th style="width:26%">Camada</th><th>Tecnologia</th></tr>
+  <tr><td>Estrutura e semântica</td><td>HTML5 com <em>landmarks</em> (<code>header</code>, <code>nav</code>, <code>main</code>), WAI-ARIA 1.2</td></tr>
+  <tr><td>Estilo</td><td>CSS3 com variáveis (<em>design tokens</em>), Flexbox, Grid e media queries; abordagem mobile-first</td></tr>
+  <tr><td>Comportamento</td><td>JavaScript ES2017, módulos por responsabilidade, roteador por <em>hash</em></td></tr>
+  <tr><td>Gráficos e ícones</td><td>SVG gerado em código (sem bibliotecas externas)</td></tr>
+  <tr><td>Testes</td><td>Playwright (E2E, multiplataforma) e axe-core (acessibilidade WCAG)</td></tr>
+  <tr><td>Versionamento e publicação</td><td>Git, GitHub e GitHub Pages (HTTPS)</td></tr>
+  <tr><td>Modelagem</td><td>UML com Mermaid e SVG; wireframes em HTML de baixa fidelidade</td></tr>
+</table>
+<p class="fonte">Fonte: o autor (2026).</p>
+
+<h2 id="s3-2" data-toc="2">3.2 Arquitetura de componentes</h2>
+<p>A aplicação está organizada em camadas (Figura 2). O <code>index.html</code> é a casca, com o link de “pular para o conteúdo” e as regiões de anúncio para leitores de tela. O <code>app.js</code> monta o layout, os menus por perfil e o roteador, que aplica a guarda de acesso (RBAC) antes de exibir cada tela. As <em>views</em> são agrupadas por perfil e usam os utilitários de <code>ui.js</code> (modal acessível, avisos, gráficos e escape de HTML). O <code>store.js</code> concentra o estado, a sessão, a auditoria e as regras de negócio. Ele faz o papel da futura camada de serviços: quando o back-end existir, suas funções passarão a chamar a API REST via <code>fetch</code>, sem alterar as telas.</p>
+<figure><figcaption>Figura 2 – Diagrama de componentes do front-end</figcaption>
+<img class="sem-borda" src="../diagramas/componentes.png" style="width:92%" />
+<p class="fonte">Fonte: o autor (2026).</p></figure>
+
+<h2 id="s3-3" data-toc="2">3.3 Mapa de navegação</h2>
+<p>Cada perfil tem um ponto de entrada próprio após o login, e as rotas são protegidas por perfil. A teleconsulta é a única rota compartilhada entre paciente e profissional, e mesmo nela o acesso é restrito aos participantes daquele agendamento (RN04).</p>
+<figure><figcaption>Figura 3 – Mapa de navegação por perfil</figcaption>
+<img class="sem-borda" src="../diagramas/navegacao.png" style="width:88%" />
+<p class="fonte">Fonte: o autor (2026).</p></figure>
+
+<h2 id="s3-4" data-toc="2">3.4 Wireframes</h2>
+<p>Antes da codificação foram desenhados wireframes de baixa fidelidade, em tons de cinza e sem identidade visual, para validar a hierarquia de informações e os fluxos sem distrações. As notas em amarelo registram decisões de interação. Os wireframes estão no repositório, em <code>docs/wireframes/</code>.</p>
+<figure><figcaption>Figura 4 – Wireframe W1: login com seleção de perfil</figcaption>
+<img class="sem-borda" src="../wireframes/wf-login.png" style="width:92%" />
+<p class="fonte">Fonte: o autor (2026).</p></figure>
+<figure><figcaption>Figura 5 – Wireframe W2: painel do paciente</figcaption>
+<img class="sem-borda" src="../wireframes/wf-paciente.png" style="width:92%" />
+<p class="fonte">Fonte: o autor (2026).</p></figure>
+<figure><figcaption>Figura 6 – Wireframe W3: agendamento em etapas</figcaption>
+<img class="sem-borda" src="../wireframes/wf-agendar.png" style="width:92%" />
+<p class="fonte">Fonte: o autor (2026).</p></figure>
+<figure><figcaption>Figura 7 – Wireframe W4: prontuário eletrônico</figcaption>
+<img class="sem-borda" src="../wireframes/wf-prontuario.png" style="width:92%" />
+<p class="fonte">Fonte: o autor (2026).</p></figure>
+<figure><figcaption>Figura 8 – Wireframe W5: sala de teleconsulta</figcaption>
+<img class="sem-borda" src="../wireframes/wf-tele.png" style="width:92%" />
+<p class="fonte">Fonte: o autor (2026).</p></figure>
+<figure><figcaption>Figura 9 – Wireframe W6: painel administrativo e mapa de leitos</figcaption>
+<img class="sem-borda" src="../wireframes/wf-admin.png" style="width:92%" />
+<p class="fonte">Fonte: o autor (2026).</p></figure>
+<figure><figcaption>Figura 10 – Wireframes W7: comportamento em dispositivos móveis</figcaption>
+<img class="sem-borda" src="../wireframes/wf-mobile.png" style="width:92%" />
+<p class="fonte">Fonte: o autor (2026).</p></figure>
+
+<h2 id="s3-5" data-toc="2">3.5 Design system e design responsivo</h2>
+<p>A identidade visual usa um verde-petróleo como cor primária, associado à saúde e à confiança, e um laranja como acento para alertas de estoque e gráficos. Todas as cores são definidas como variáveis CSS (<em>design tokens</em>). Isso permite o modo de alto contraste trocando apenas os valores das variáveis. As razões de contraste foram calculadas pela fórmula de luminância relativa da WCAG e todas ultrapassam o mínimo de 4,5:1 exigido para texto normal no nível AA.</p>
+<p class="tab-titulo">Tabela 4 – Paleta de cores e contraste (WCAG 2.1, critério 1.4.3)</p>
+<table>
+  <tr><th>Token</th><th>Uso</th><th>Cor do texto / fundo</th><th style="width:16%">Contraste</th></tr>
+  <tr><td><code>--primaria</code></td><td>Botões, links e menu ativo</td><td>#0B5F6E / #FFFFFF</td><td>7,30:1 ✓</td></tr>
+  <tr><td><code>--texto</code></td><td>Texto principal</td><td>#17232D / #F3F6F8</td><td>14,72:1 ✓</td></tr>
+  <tr><td><code>--texto-suave</code></td><td>Textos secundários</td><td>#4D5D6B / #FFFFFF</td><td>6,79:1 ✓</td></tr>
+  <tr><td><code>--ok</code></td><td>Sucesso, leito livre</td><td>#17663A / #E2F3E8</td><td>6,08:1 ✓</td></tr>
+  <tr><td><code>--info</code></td><td>Status “agendada”</td><td>#0B4F8A / #E3EEFA</td><td>7,15:1 ✓</td></tr>
+  <tr><td><code>--alerta</code></td><td>Higienização, avisos</td><td>#8A5300 / #FDF0D9</td><td>5,62:1 ✓</td></tr>
+  <tr><td><code>--perigo</code></td><td>Erros, alergia, leito ocupado</td><td>#B0261A / #FBE5E2</td><td>5,55:1 ✓</td></tr>
+</table>
+<p class="fonte">Fonte: o autor (2026).</p>
+<p>A tipografia usa a fonte do sistema operacional (Segoe UI, Roboto ou San Francisco). Ela carrega instantaneamente e é otimizada para leitura em cada plataforma. Os tamanhos usam unidades relativas (<code>rem</code>), o que permite ampliar o texto em até 150% pelo próprio sistema. Os componentes reutilizáveis incluem botões (primário, secundário, perigo e ícone), campos com mensagem de erro, <em>badges</em> de status, cartões de indicador (KPI), tabelas, abas, diálogo modal, avisos temporários (<em>toasts</em>), linha do tempo e mapa de leitos.</p>
+<p class="tab-titulo">Tabela 5 – Pontos de quebra (breakpoints) do layout responsivo</p>
+<table>
+  <tr><th style="width:22%">Largura</th><th>Comportamento</th></tr>
+  <tr><td>&lt; 600 px (celular)</td><td>Uma coluna; menu lateral recolhido e aberto pelo botão “☰”; tabelas exibidas como cartões com rótulos; seletores de perfil e tipo empilhados abaixo de 420 px.</td></tr>
+  <tr><td>600 a 959 px (tablet)</td><td>Formulários em duas colunas; atalhos em quatro colunas; indicadores em grade de 4 a partir de 720 px; botões de acessibilidade visíveis.</td></tr>
+  <tr><td>≥ 960 px (desktop)</td><td>Menu lateral fixo; painéis lado a lado; tela de login com área institucional; sala de teleconsulta com painel lateral.</td></tr>
+</table>
+<p class="fonte">Fonte: o autor (2026).</p>
+
+<h2 id="s3-6" data-toc="2">3.6 Acessibilidade (WCAG 2.1 AA)</h2>
+<p>A acessibilidade foi tratada como requisito desde os wireframes, não como ajuste final. A Tabela 6 relaciona os principais critérios de sucesso da WCAG 2.1 à forma como foram atendidos. Também foram seguidas recomendações do eMAG, o modelo de acessibilidade do governo brasileiro, como o atalho para o conteúdo e os recursos de contraste e tamanho de fonte no topo da página.</p>
+<p class="tab-titulo">Tabela 6 – Critérios WCAG 2.1 e implementação</p>
+<table>
+  <tr><th style="width:30%">Critério</th><th>Implementação no protótipo</th></tr>
+  <tr><td>1.1.1 Conteúdo não textual</td><td>Ícones decorativos com <code>aria-hidden</code>; botões só com ícone têm <code>aria-label</code>; gráfico SVG com <code>role="img"</code> e descrição, além da tabela equivalente em Relatórios.</td></tr>
+  <tr><td>1.3.1 Informações e relações</td><td>Cabeçalhos hierárquicos; tabelas com <code>caption</code> e <code>scope</code>; <code>fieldset</code>/<code>legend</code> em grupos; listas semânticas.</td></tr>
+  <tr><td>1.4.3 Contraste mínimo</td><td>Todas as combinações ≥ 4,5:1 (Tabela 4), além do modo de alto contraste.</td></tr>
+  <tr><td>1.4.4 Redimensionar texto / 1.4.10 Reflow</td><td>Unidades relativas; botões A−/A+ (90% a 150%); sem rolagem horizontal em 320 px (testado no CT-33 e no CT-35).</td></tr>
+  <tr><td>1.4.1 Uso de cor</td><td>Status sempre com texto (“Ocupado”, “Livre”) além da cor; erro com borda mais espessa e mensagem.</td></tr>
+  <tr><td>2.1.1 Teclado / 2.1.2 Sem armadilha</td><td>Todos os controles são nativos ou têm <code>tabindex</code>; abas com setas; modal com foco preso e Esc para fechar.</td></tr>
+  <tr><td>2.4.1 Ignorar blocos</td><td>Link “Pular para o conteúdo principal” como primeiro foco.</td></tr>
+  <tr><td>2.4.2 / 2.4.3 Título e ordem do foco</td><td>Título da aba atualizado a cada rota; foco levado ao título da nova página; foco devolvido ao botão de origem ao fechar o modal.</td></tr>
+  <tr><td>2.4.7 Foco visível</td><td>Anel de foco duplo (branco e azul) visível sobre qualquer fundo.</td></tr>
+  <tr><td>2.5.5 Tamanho do alvo</td><td>Botões e campos com altura mínima de 44 px.</td></tr>
+  <tr><td>3.3.1 / 3.3.3 Identificação e sugestão de erro</td><td>Mensagem específica abaixo do campo, ligada por <code>aria-describedby</code>, com <code>aria-invalid</code> e foco no primeiro erro.</td></tr>
+  <tr><td>3.3.4 Prevenção de erros</td><td>Diálogos de revisão e confirmação para agendar, cancelar, emitir receita, dar alta e sair.</td></tr>
+  <tr><td>4.1.2 Nome, função, valor</td><td>Estados com <code>aria-pressed</code>, <code>aria-expanded</code>, <code>aria-checked</code>, <code>aria-current</code> e <code>aria-selected</code>.</td></tr>
+  <tr><td>4.1.3 Mensagens de status</td><td>Avisos em região <code>role="status"</code>/<code>aria-live</code>, anunciados sem mover o foco.</td></tr>
+  <tr><td>2.3.3 Animação por interação</td><td>Animações desativadas quando o usuário configura <code>prefers-reduced-motion</code>.</td></tr>
+</table>
+<p class="fonte">Fonte: o autor (2026), com base em W3C (2018).</p>
+
+<h2 id="s3-7" data-toc="2">3.7 Segurança e LGPD na interface</h2>
+<p>Embora a proteção definitiva dos dados dependa do servidor, a interface tem responsabilidades próprias de segurança e privacidade. Elas foram implementadas como mostra a Tabela 7, tomando como referência o OWASP Top 10 (2021) e os princípios do art. 6º da LGPD.</p>
+<p class="tab-titulo">Tabela 7 – Medidas de segurança e privacidade</p>
+<table>
+  <tr><th style="width:30%">Risco / princípio</th><th>Medida aplicada</th></tr>
+  <tr><td>A01 – Quebra de controle de acesso</td><td>Guarda de rotas por perfil; validação de que o usuário participa da teleconsulta; tentativas negadas registradas como <code>ACESSO_NEGADO</code>.</td></tr>
+  <tr><td>A03 – Injeção (XSS)</td><td>Função <code>esc()</code> aplicada a todo dado dinâmico antes de inseri-lo no HTML (testado no CT-27).</td></tr>
+  <tr><td>A07 – Falhas de autenticação</td><td>Senha forte no cadastro (8+ caracteres, maiúscula, número e símbolo); mensagem genérica de erro de login (não revela se o e-mail existe); expiração de sessão.</td></tr>
+  <tr><td>A09 – Falhas de log e monitoramento</td><td>Trilha de auditoria com usuário, perfil, ação, detalhe, data/hora e IP; filtro e exportação para o encarregado (DPO).</td></tr>
+  <tr><td>LGPD – Consentimento (art. 8º e 11)</td><td>Aceite explícito e não pré-marcado da política no cadastro; status do consentimento visível ao titular.</td></tr>
+  <tr><td>LGPD – Minimização (art. 6º, III)</td><td>CPF mascarado (***.***.789-09) em todas as telas; o paciente vê apenas os próprios dados.</td></tr>
+  <tr><td>LGPD – Direitos do titular (art. 18)</td><td>Exportação dos dados em JSON (portabilidade), correção cadastral, revogação de consentimento e consulta de quem acessou os dados.</td></tr>
+  <tr><td>LGPD – Transparência (art. 9º)</td><td>Política de privacidade acessível no login, no cadastro e em “Meus dados”, com finalidade, base legal, medidas de segurança e contato do DPO.</td></tr>
+</table>
+<p class="fonte">Fonte: o autor (2026).</p>
+<p>Ficam para a camada de servidor, e estão previstas na arquitetura (Figura 13): armazenamento do token de sessão em cookie <em>HttpOnly</em>, <em>Secure</em> e <em>SameSite</em>; criptografia AES-256 em repouso; cabeçalhos de segurança como <em>Content-Security-Policy</em> e HSTS; limitação de tentativas de login; e assinatura de receitas com certificado ICP-Brasil, conforme a Lei nº 14.063/2020.</p>
+
+<h2 id="s3-8" data-toc="2">3.8 Modelagem dinâmica</h2>
+<p>A Figura 11 detalha a troca de mensagens do caso de uso UC02, incluindo o fluxo alternativo de concorrência. A Figura 12 apresenta o ciclo de vida de um agendamento, que orienta os <em>badges</em> de status e as ações disponíveis em cada estado.</p>
+<figure><figcaption>Figura 11 – Diagrama de sequência: agendar consulta</figcaption>
+<img class="sem-borda" src="../diagramas/sequencia-agendamento.png" style="width:86%" />
+<p class="fonte">Fonte: o autor (2026).</p></figure>
+<figure><figcaption>Figura 12 – Diagrama de estados do agendamento</figcaption>
+<img class="sem-borda" src="../diagramas/estados-agendamento.png" style="width:52%" />
+<p class="fonte">Fonte: o autor (2026).</p></figure>
+<figure><figcaption>Figura 13 – Diagrama de implantação (atual e previsto)</figcaption>
+<img class="sem-borda" src="../diagramas/implantacao.png" style="width:90%" />
+<p class="fonte">Fonte: o autor (2026). Linhas tracejadas indicam componentes da fase de back-end.</p></figure>
+</section>
+
+<!-- ============================ 4 IMPLEMENTAÇÃO ============================ -->
+<section class="secao">
+<h1 id="s4" data-toc="1">4 Implementação (prototipagem)</h1>
+
+<h2 id="s4-1" data-toc="2">4.1 Repositório e publicação</h2>
+<div class="destaque">
+  <p><strong>Repositório do código-fonte (GitHub):</strong> <span class="preencher" contenteditable="true" spellcheck="false">https://github.com/[usuario]/sghss-vidaplus</span></p>
+  <p><strong>Protótipo publicado (GitHub Pages):</strong> <span class="preencher" contenteditable="true" spellcheck="false">https://[usuario].github.io/sghss-vidaplus/</span></p>
+  <p><strong>Credenciais de demonstração</strong> (senha <code>Vida@2026</code> para todos): paciente <code>ana.souza@email.com</code>; profissional <code>carlos.menezes@vidaplus.com</code>; administrador <code>admin@vidaplus.com</code>. A tela de login também tem atalhos que preenchem essas credenciais.</p>
+</div>
+<p>O repositório contém o código-fonte, os testes automatizados, os diagramas (arquivos-fonte e imagens), os wireframes e as capturas de tela. O arquivo <code>README.md</code> descreve como executar o projeto localmente, rodar os testes e publicá-lo. O protótipo tem cerca de 1.700 linhas de JavaScript, distribuídas em 9 arquivos.</p>
+
+<h2 id="s4-2" data-toc="2">4.2 Estrutura do projeto</h2>
+<pre>sghss-vidaplus/
+├── index.html              casca da SPA: landmarks, skip link, regiões aria-live
+├── css/styles.css          tokens, layout responsivo, alto contraste, impressão
+├── js/
+│   ├── data.js             dados fictícios (simulam as respostas da API)
+│   ├── store.js            estado, sessão, auditoria e regras de negócio
+│   ├── ui.js               escape XSS, modal acessível, toasts, gráfico, roteador
+│   ├── app.js              layout, menus por perfil, guarda RBAC, gestão de foco
+│   └── views/              auth · paciente · profissional · admin · telemedicina
+├── tests/
+│   ├── e2e/                27 casos funcionais e de segurança (Playwright)
+│   └── acessibilidade/     axe-core (WCAG 2.1 AA), teclado e responsividade
+├── docs/                   diagramas, wireframes, prints e relatório de testes
+├── playwright.config.js
+└── package.json</pre>
+
+<h2 id="s4-3" data-toc="2">4.3 Telas implementadas</h2>
+<p>As figuras a seguir mostram o protótipo em funcionamento. Todas as telas foram capturadas do protótipo em execução, com os dados de demonstração.</p>
+<figure><figcaption>Figura 14 – Tela de login com seleção de perfil</figcaption>
+<img src="../prints/01-login.png" style="width:90%" />
+<p class="fonte">Fonte: o autor (2026).</p></figure>
+<figure><figcaption>Figura 15 – Cadastro de paciente com validações e consentimento LGPD</figcaption>
+<img src="../prints/02-cadastro-validacao.png" style="width:78%" />
+<p class="fonte">Fonte: o autor (2026).</p></figure>
+<figure><figcaption>Figura 16 – Painel do paciente: próximos atendimentos, notificações e atalhos</figcaption>
+<img src="../prints/03-paciente-inicio.png" style="width:90%" />
+<p class="fonte">Fonte: o autor (2026).</p></figure>
+<figure><figcaption>Figura 17 – Agendamento: horários ocupados aparecem riscados e desabilitados</figcaption>
+<img src="../prints/04-paciente-agendar.png" style="width:90%" />
+<p class="fonte">Fonte: o autor (2026).</p></figure>
+<figure><figcaption>Figura 18 – Diálogo de confirmação do agendamento (prevenção de erros)</figcaption>
+<img src="../prints/05-paciente-confirmar.png" style="width:90%" />
+<p class="fonte">Fonte: o autor (2026).</p></figure>
+<figure><figcaption>Figura 19 – Histórico clínico em linha do tempo e receitas digitais</figcaption>
+<img src="../prints/07-paciente-historico.png" style="width:90%" />
+<p class="fonte">Fonte: o autor (2026).</p></figure>
+<figure><figcaption>Figura 20 – Receita digital com código de validação e assinatura</figcaption>
+<img src="../prints/08-receita-digital.png" style="width:90%" />
+<p class="fonte">Fonte: o autor (2026).</p></figure>
+<figure><figcaption>Figura 21 – Meus dados e privacidade: direitos do titular (LGPD)</figcaption>
+<img src="../prints/09-paciente-lgpd.png" style="width:90%" />
+<p class="fonte">Fonte: o autor (2026).</p></figure>
+<figure><figcaption>Figura 22 – Teleconsulta na visão do paciente</figcaption>
+<img src="../prints/10-teleconsulta-paciente.png" style="width:90%" />
+<p class="fonte">Fonte: o autor (2026).</p></figure>
+<figure><figcaption>Figura 23 – Agenda do profissional com indicadores do dia</figcaption>
+<img src="../prints/11-profissional-agenda.png" style="width:90%" />
+<p class="fonte">Fonte: o autor (2026).</p></figure>
+<figure><figcaption>Figura 24 – Prontuário eletrônico com alerta de alergia</figcaption>
+<img src="../prints/12-profissional-prontuario.png" style="width:90%" />
+<p class="fonte">Fonte: o autor (2026).</p></figure>
+<figure><figcaption>Figura 25 – Emissão de receita digital</figcaption>
+<img src="../prints/13-emitir-receita.png" style="width:90%" />
+<p class="fonte">Fonte: o autor (2026).</p></figure>
+<figure><figcaption>Figura 26 – Teleconsulta na visão do profissional, com registro do atendimento</figcaption>
+<img src="../prints/14-teleconsulta-profissional.png" style="width:90%" />
+<p class="fonte">Fonte: o autor (2026).</p></figure>
+<figure><figcaption>Figura 27 – Painel administrativo com indicadores, finanças e suprimentos</figcaption>
+<img src="../prints/15-admin-painel.png" style="width:90%" />
+<p class="fonte">Fonte: o autor (2026).</p></figure>
+<figure><figcaption>Figura 28 – Gestão de leitos e internações</figcaption>
+<img src="../prints/16-admin-leitos.png" style="width:90%" />
+<p class="fonte">Fonte: o autor (2026).</p></figure>
+<figure><figcaption>Figura 29 – Relatórios gerenciais com exportação em CSV</figcaption>
+<img src="../prints/18-admin-relatorios.png" style="width:90%" />
+<p class="fonte">Fonte: o autor (2026).</p></figure>
+<figure><figcaption>Figura 30 – Registros de auditoria</figcaption>
+<img src="../prints/19-admin-auditoria.png" style="width:90%" />
+<p class="fonte">Fonte: o autor (2026).</p></figure>
+<div class="tres">
+<figure><figcaption>Figura 31 – Login (celular)</figcaption><img src="../prints/21-mobile-login.png" style="width:100%" /></figure>
+<figure><figcaption>Figura 32 – Painel do paciente (celular)</figcaption><img src="../prints/22-mobile-paciente.png" style="width:100%" /></figure>
+<figure><figcaption>Figura 33 – Menu aberto (celular)</figcaption><img src="../prints/23-mobile-menu.png" style="width:100%" /></figure>
+</div>
+<p class="fonte">Fonte: o autor (2026). Capturas em viewport de iPhone 13 (390 × 844 px).</p>
+
+<h2 id="s4-4" data-toc="2">4.4 Trechos de código relevantes</h2>
+<p>Os trechos abaixo ilustram decisões técnicas importantes. O código completo está no repositório.</p>
+<p class="ni"><strong>a) Guarda de rotas com controle de acesso por perfil</strong> (<code>js/app.js</code>):</p>
+<pre>if (!r.def.publico &amp;&amp; !sessao) { location.hash = '#/login'; return; }
+// Controle de acesso por perfil (RBAC) — o back-end também validaria cada requisição.
+if (r.def.perfis &amp;&amp; r.def.perfis.indexOf(sessao.perfil) === -1) {
+  Store.auditar('ACESSO_NEGADO', caminho);
+  UI.toast('Você não tem permissão para acessar essa página.', 'erro');
+  location.hash = App.inicio(sessao.perfil);
+  return;
+}</pre>
+<p class="ni"><strong>b) Escape de HTML para prevenir XSS</strong> (<code>js/ui.js</code>):</p>
+<pre>function esc(v) {
+  return String(v == null ? '' : v)
+    .replace(/&amp;/g, '&amp;amp;').replace(/&lt;/g, '&amp;lt;').replace(/&gt;/g, '&amp;gt;')
+    .replace(/"/g, '&amp;quot;').replace(/'/g, '&amp;#39;');
+}</pre>
+<p class="ni"><strong>c) Modal acessível: foco preso, Esc e devolução do foco</strong> (<code>js/ui.js</code>, resumido):</p>
+<pre>dlg.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape') { e.preventDefault(); fecharModal(); }
+  if (e.key === 'Tab') {
+    const f = dlg.querySelectorAll('button, [href], input, select, textarea');
+    const primeiro = f[0], ultimo = f[f.length - 1];
+    if (e.shiftKey &amp;&amp; document.activeElement === primeiro) { e.preventDefault(); ultimo.focus(); }
+    else if (!e.shiftKey &amp;&amp; document.activeElement === ultimo) { e.preventDefault(); primeiro.focus(); }
+  }
+});
+document.getElementById('app').inert = true; // fundo inacessível enquanto o diálogo está aberto</pre>
+<p class="ni"><strong>d) Prevenção de conflito de agenda</strong> (<code>js/store.js</code>):</p>
+<pre>agendar: function (dados) {
+  const ocupados = Store.horariosOcupados(dados.profissionalId, dados.data);
+  if (ocupados.indexOf(dados.hora) !== -1) return { ok: false, erro: 'Horário indisponível. Escolha outro.' };
+  const a = Object.assign({ id: novoId('a'), status: 'agendada' }, dados);
+  estado.agendamentos.push(a);
+  auditar('AGENDAMENTO_CRIADO', a.id + ' (' + a.tipo + ')');
+  return { ok: true, agendamento: a };
+}</pre>
+<p class="ni"><strong>e) Validação de CPF pelos dígitos verificadores</strong> (<code>js/views/auth.js</code>):</p>
+<pre>function cpfValido(cpf) {
+  const n = String(cpf).replace(/\D/g, '');
+  if (n.length !== 11 || /^(\d)\1{10}$/.test(n)) return false;
+  for (let t = 9; t &lt; 11; t++) {
+    let s = 0;
+    for (let i = 0; i &lt; t; i++) s += Number(n[i]) * (t + 1 - i);
+    if (Number(n[t]) !== ((10 * s) % 11) % 10) return false;
+  }
+  return true;
+}</pre>
+</section>
+
+<!-- ============================ 5 PLANO DE TESTES ============================ -->
+<section class="secao">
+<h1 id="s5" data-toc="1">5 Plano de testes</h1>
+<p>Esta seção resume a estratégia de qualidade adotada para o front-end. O foco foi a <strong>automação</strong>: os testes são executados por comando no repositório e podem ser integrados a um pipeline de integração contínua (por exemplo, GitHub Actions) para rodar a cada alteração.</p>
+
+<h2 id="s5-1" data-toc="2">5.1 Estratégia e ferramentas</h2>
+<p class="tab-titulo">Tabela 8 – Níveis de teste e ferramentas</p>
+<table>
+  <tr><th style="width:22%">Tipo</th><th>Objetivo</th><th style="width:24%">Ferramenta</th><th style="width:14%">Situação</th></tr>
+  <tr><td>Funcional (E2E)</td><td>Validar os fluxos completos de cada perfil pela interface, como um usuário real.</td><td>Playwright</td><td>Executado</td></tr>
+  <tr><td>Segurança (interface)</td><td>Verificar RBAC, sessão, isolamento da teleconsulta e proteção contra XSS.</td><td>Playwright</td><td>Executado</td></tr>
+  <tr><td>Acessibilidade</td><td>Verificar automaticamente os critérios WCAG 2.1 A/AA em todas as telas, além da navegação por teclado.</td><td>axe-core + Playwright</td><td>Executado</td></tr>
+  <tr><td>Responsividade</td><td>Garantir a ausência de rolagem horizontal no celular e o funcionamento do menu móvel.</td><td>Playwright (Pixel 7)</td><td>Executado</td></tr>
+  <tr><td>Segurança (dinâmica)</td><td>Varredura de vulnerabilidades e cabeçalhos HTTP do site publicado e da futura API.</td><td>OWASP ZAP</td><td>Planejado</td></tr>
+  <tr><td>Carga / desempenho</td><td>Medir tempo de carregamento (front) e vazão da API sob carga.</td><td>Lighthouse; JMeter ou k6</td><td>Planejado</td></tr>
+  <tr><td>Usabilidade</td><td>Avaliar facilidade de uso com usuários reais de cada perfil.</td><td>Teste moderado + questionário SUS</td><td>Planejado</td></tr>
+</table>
+<p class="fonte">Fonte: o autor (2026).</p>
+
+<h2 id="s5-2" data-toc="2">5.2 Casos de teste e resultados</h2>
+<p>Foram especificados e automatizados 35 casos de teste, que geram 56 execuções, porque o CT-28 roda em 18 telas e estados e o CT-33 em 5 telas. A Tabela 9 lista os casos, os requisitos cobertos e o resultado da última execução.</p>
+<p class="tab-titulo">Tabela 9 – Casos de teste automatizados</p>
+<table>
+  <tr><th style="width:9%;white-space:nowrap">ID</th><th>Cenário e resultado esperado</th><th style="width:15%">Requisito</th><th style="width:15%">Resultado</th></tr>
+  <tr><td>CT-01</td><td>Login válido do paciente leva ao painel com saudação.</td><td>RF02</td><td>Aprovado</td></tr>
+  <tr><td>CT-02</td><td>Senha incorreta exibe erro genérico e não autentica.</td><td>RF02, RNF02</td><td>Aprovado</td></tr>
+  <tr><td>CT-03</td><td>Usuário não entra com perfil diferente do seu.</td><td>RNF02</td><td>Aprovado</td></tr>
+  <tr><td>CT-04</td><td>Campos vazios: mensagem, <code>aria-invalid</code> e foco no campo.</td><td>RF02, RNF09</td><td>Aprovado</td></tr>
+  <tr><td>CT-05</td><td>Rota protegida sem sessão redireciona ao login.</td><td>RNF02</td><td>Aprovado</td></tr>
+  <tr><td>CT-06</td><td>Paciente tentando abrir área administrativa é bloqueado.</td><td>RNF02, RNF03</td><td>Aprovado</td></tr>
+  <tr><td>CT-07</td><td>Cadastro rejeita CPF inválido.</td><td>RF01</td><td>Aprovado</td></tr>
+  <tr><td>CT-08</td><td>Cadastro sem aceite da política é bloqueado.</td><td>RF01, RNF04</td><td>Aprovado</td></tr>
+  <tr><td>CT-09</td><td>Cadastro válido permite login do novo paciente.</td><td>RF01</td><td>Aprovado</td></tr>
+  <tr><td>CT-10</td><td>Logout encerra a sessão e bloqueia o retorno.</td><td>RNF05</td><td>Aprovado</td></tr>
+  <tr><td>CT-11</td><td>Agendamento completo aparece em “Meus agendamentos”.</td><td>RF04</td><td>Aprovado</td></tr>
+  <tr><td>CT-12</td><td>Horário já ocupado fica desabilitado.</td><td>RN01</td><td>Aprovado</td></tr>
+  <tr><td>CT-13</td><td>Agendar sem dados obrigatórios mostra erros.</td><td>RF04</td><td>Aprovado</td></tr>
+  <tr><td>CT-14</td><td>Cancelamento remove o agendamento da lista de futuros.</td><td>RF05</td><td>Aprovado</td></tr>
+  <tr><td>CT-15</td><td>Histórico e receita exibidos com CPF mascarado.</td><td>RF07, RN08</td><td>Aprovado</td></tr>
+  <tr><td>CT-16</td><td>Portabilidade gera arquivo JSON dos dados do titular.</td><td>RF09</td><td>Aprovado</td></tr>
+  <tr><td>CT-17</td><td>Profissional registra evolução no prontuário.</td><td>RF12</td><td>Aprovado</td></tr>
+  <tr><td>CT-18</td><td>CID-10 em formato inválido é rejeitado.</td><td>RF12</td><td>Aprovado</td></tr>
+  <tr><td>CT-19</td><td>Receita sem assinatura é bloqueada; com assinatura, é emitida e notifica o paciente.</td><td>RF13, RN05</td><td>Aprovado</td></tr>
+  <tr><td>CT-20</td><td>Teleconsulta: conecta, registra, encerra e marca como realizada.</td><td>RF08, RF14</td><td>Aprovado</td></tr>
+  <tr><td>CT-21</td><td>Paciente não acessa a teleconsulta de outra pessoa.</td><td>RN04</td><td>Aprovado</td></tr>
+  <tr><td>CT-22</td><td>Internação em leito livre e alta mudam o status do leito.</td><td>RF17, RN07</td><td>Aprovado</td></tr>
+  <tr><td>CT-23</td><td>Administrador cadastra novo profissional.</td><td>RF16</td><td>Aprovado</td></tr>
+  <tr><td>CT-24</td><td>Filtro de unidade altera os indicadores.</td><td>RF22, RNF07</td><td>Aprovado</td></tr>
+  <tr><td>CT-25</td><td>Relatório financeiro é exportado em CSV.</td><td>RF19</td><td>Aprovado</td></tr>
+  <tr><td>CT-26</td><td>Auditoria registra login e exportação.</td><td>RF21, RNF03</td><td>Aprovado</td></tr>
+  <tr><td>CT-27</td><td>Conteúdo malicioso (<code>&lt;img onerror&gt;</code>) é exibido como texto, sem executar.</td><td>RNF06</td><td>Aprovado</td></tr>
+  <tr><td>CT-28</td><td>Auditoria axe-core WCAG 2.1 A/AA sem violações em 16 telas, no modo alto contraste e com modal aberto.</td><td>RNF09</td><td>Aprovado (18/18)</td></tr>
+  <tr><td>CT-29</td><td>O primeiro Tab foca o link “Pular para o conteúdo”.</td><td>RNF09</td><td>Aprovado</td></tr>
+  <tr><td>CT-30</td><td>Login completo usando apenas o teclado.</td><td>RNF09</td><td>Aprovado</td></tr>
+  <tr><td>CT-31</td><td>Modal prende o foco, fecha com Esc e devolve o foco.</td><td>RNF09</td><td>Aprovado</td></tr>
+  <tr><td>CT-32</td><td>Ao navegar, o foco vai para o título da página.</td><td>RNF09</td><td>Aprovado</td></tr>
+  <tr><td>CT-33</td><td>Sem rolagem horizontal no celular em 5 telas.</td><td>RNF10</td><td>Aprovado (5/5)</td></tr>
+  <tr><td>CT-34</td><td>Menu móvel abre pelo botão e fecha com Esc.</td><td>RNF10</td><td>Aprovado</td></tr>
+  <tr><td>CT-35</td><td>Texto ampliado a 150% sem rolagem horizontal.</td><td>RNF09</td><td>Aprovado</td></tr>
+</table>
+<p class="fonte">Fonte: o autor (2026). Execução: 56 testes aprovados, 0 falhas (Anexo A).</p>
+
+<div class="destaque">
+<p><strong>Defeitos encontrados e corrigidos durante a execução.</strong> Os testes não serviram apenas para confirmar o que já funcionava. A primeira execução reprovou 21 testes e revelou problemas reais:</p>
+<p>(1) os botões “A−/A+” e os leitos tinham nome acessível diferente do texto visível (critério 2.5.3, <em>label in name</em>), o que atrapalha quem usa comando de voz; (2) as notificações lidas usavam opacidade que reduzia o contraste abaixo de 4,5:1; (3) ao fechar o menu móvel com Esc, o botão continuava anunciado como “Fechar menu”; (4) o grupo de horários tinha um rótulo que mudava de texto, gerando ambiguidade para tecnologias assistivas. Após as correções, incluindo deixar o conteúdo de fundo <code>inert</code> enquanto um diálogo está aberto, todos os 56 testes passaram.</p>
+</div>
+
+<h2 id="s5-3" data-toc="2">5.3 Critérios de aceitação</h2>
+<ul>
+  <li>100% dos casos de teste funcionais e de segurança aprovados, sem defeitos críticos ou altos em aberto;</li>
+  <li>zero violações WCAG 2.1 A/AA nas verificações automáticas, complementadas por revisão manual com leitor de tela (NVDA no Windows e TalkBack no Android);</li>
+  <li>nenhuma rolagem horizontal entre 320 px e 1920 px de largura;</li>
+  <li>pontuação Lighthouse ≥ 90 em Desempenho, Acessibilidade e Boas Práticas no site publicado;</li>
+  <li>tempo para renderizar cada tela menor que 1 s e <em>Largest Contentful Paint</em> menor que 2,5 s em conexão 4G;</li>
+  <li>escore SUS médio ≥ 75 no teste de usabilidade.</li>
+</ul>
+
+<h2 id="s5-4" data-toc="2">5.4 Roteiros para testes de carga, segurança e usabilidade</h2>
+<p><strong>Carga e desempenho.</strong> No front-end: auditoria Lighthouse em modo móvel nas telas de login, painel do paciente e painel administrativo, medindo LCP, CLS e tempo total de bloqueio. Na integração com o back-end: script JMeter (ou k6) simulando o pico de segunda-feira de manhã, com 500 usuários virtuais por 15 minutos executando login, consulta de horários e agendamento. Meta: p95 abaixo de 800 ms e taxa de erro abaixo de 1%. Um teste de resistência de 4 horas verifica vazamentos de memória.</p>
+<p><strong>Segurança.</strong> Varredura passiva e ativa com OWASP ZAP no site publicado e na API (<em>baseline scan</em> no pipeline e <em>full scan</em> antes de cada versão). Verificação de cabeçalhos (CSP, HSTS, X-Content-Type-Options), tentativa de acesso a rotas e recursos de outro perfil (IDOR), testes de injeção nos campos de texto livre (prontuário, chat, motivo) e revisão da exposição de dados sensíveis em respostas, logs e armazenamento do navegador.</p>
+<p><strong>Usabilidade.</strong> Teste moderado com 5 participantes por perfil (incluindo pelo menos 2 pacientes com mais de 60 anos e 1 usuário de leitor de tela). Tarefas: (1) agendar uma teleconsulta; (2) cancelar uma consulta; (3) encontrar a última receita; (4) como profissional, registrar uma evolução e emitir uma receita; (5) como administrador, internar um paciente e exportar o relatório financeiro. Métricas: taxa de sucesso, tempo por tarefa, erros e o questionário SUS (System Usability Scale) ao final. Os problemas são classificados pelas heurísticas de Nielsen e priorizados por severidade.</p>
+</section>
+
+<!-- ============================ 6 CONCLUSÃO ============================ -->
+<section class="secao">
+<h1 id="s6" data-toc="1">6 Conclusão</h1>
+<p>O projeto alcançou o objetivo de entregar a camada de interface do SGHSS VidaPlus como um protótipo funcional, publicado na web e verificado por testes automatizados. Os 22 requisitos funcionais foram implementados nas três áreas do sistema (paciente, profissional de saúde e administração), e os requisitos não funcionais de segurança, LGPD, acessibilidade e responsividade foram tratados desde os wireframes, e não como acabamento.</p>
+<p>A principal lição foi o valor dos testes automatizados de acessibilidade. Mesmo com cuidado durante o desenvolvimento, a primeira execução do axe-core encontrou problemas que passariam despercebidos numa inspeção visual, como nomes acessíveis divergentes do texto visível e uma perda de contraste causada por opacidade. Corrigi-los levou minutos, mas eles afetariam diretamente usuários de leitor de tela e de comando de voz. Outra lição foi que segurança e privacidade também são questões de interface: mascarar o CPF, pedir confirmação antes de ações irreversíveis, exibir alertas de alergia e mostrar ao paciente quem acessou seus dados são decisões de design.</p>
+<p>Entre os desafios, destaca-se equilibrar a densidade de informação das telas profissionais (agenda, prontuário, leitos) com a simplicidade exigida pelo público de pacientes. Isso foi resolvido com layouts diferentes por perfil sobre um mesmo design system. Outro desafio foi tornar as tabelas utilizáveis no celular, o que levou à transformação de linhas em cartões rotulados.</p>
+<p>Como pontos de atenção para a evolução do projeto, recomenda-se:</p>
+<ul>
+  <li>implementar o back-end (API REST com autenticação JWT, banco relacional com criptografia em repouso) e substituir o <code>store.js</code> por chamadas reais, sem alterar as telas;</li>
+  <li>integrar a videochamada real via WebRTC, com servidor TURN próprio, e a assinatura de receitas com certificado ICP-Brasil;</li>
+  <li>adicionar notificações por e-mail, SMS e <em>push</em> e transformar a aplicação em PWA, com uso offline limitado para consulta de agendamentos;</li>
+  <li>adotar autenticação em dois fatores para profissionais e administradores;</li>
+  <li>executar os testes de carga, a varredura OWASP ZAP e o teste de usabilidade planejados, e configurar a execução automática dos testes no GitHub Actions;</li>
+  <li>considerar a migração para um framework de componentes (React ou Vue) caso a equipe e o número de telas cresçam.</li>
+</ul>
+</section>
+
+<!-- ============================ REFERÊNCIAS ============================ -->
+<section class="secao">
+<h1 id="s7" data-toc="1">Referências</h1>
+<div style="text-align:left">
+<p class="ni">BRASIL. <strong>Lei nº 13.709, de 14 de agosto de 2018</strong>. Lei Geral de Proteção de Dados Pessoais (LGPD). Brasília: Presidência da República, 2018. Disponível em: https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm. Acesso em: 4 nov. 2026.</p>
+<p class="ni">BRASIL. <strong>Lei nº 13.787, de 27 de dezembro de 2018</strong>. Dispõe sobre a digitalização e a utilização de sistemas informatizados para a guarda, o armazenamento e o manuseio de prontuário de paciente. Brasília: Presidência da República, 2018.</p>
+<p class="ni">BRASIL. <strong>Lei nº 14.063, de 23 de setembro de 2020</strong>. Dispõe sobre o uso de assinaturas eletrônicas em interações com entes públicos, em atos de pessoas jurídicas e em questões de saúde. Brasília: Presidência da República, 2020.</p>
+<p class="ni">BRASIL. Ministério do Planejamento, Orçamento e Gestão. <strong>eMAG: Modelo de Acessibilidade em Governo Eletrônico</strong>. Versão 3.1. Brasília, 2014. Disponível em: https://emag.governoeletronico.gov.br. Acesso em: 4 nov. 2026.</p>
+<p class="ni">BROOKE, John. SUS: a “quick and dirty” usability scale. In: JORDAN, P. W. et al. (ed.). <strong>Usability evaluation in industry</strong>. London: Taylor &amp; Francis, 1996. p. 189-194.</p>
+<p class="ni">CONSELHO FEDERAL DE MEDICINA. <strong>Resolução CFM nº 2.314, de 20 de abril de 2022</strong>. Define e regulamenta a telemedicina como forma de serviços médicos mediados por tecnologias de comunicação. Brasília: CFM, 2022.</p>
+<p class="ni">DEQUE SYSTEMS. <strong>axe-core</strong>: accessibility engine for automated web UI testing. Disponível em: https://github.com/dequelabs/axe-core. Acesso em: 4 nov. 2026.</p>
+<p class="ni">INTERNATIONAL ORGANIZATION FOR STANDARDIZATION. <strong>ISO/IEC 25010:2011</strong>: systems and software engineering — systems and software quality requirements and evaluation (SQuaRE) — system and software quality models. Geneva: ISO, 2011.</p>
+<p class="ni">KRUG, Steve. <strong>Não me faça pensar</strong>: atualizado. Rio de Janeiro: Alta Books, 2014.</p>
+<p class="ni">MICROSOFT. <strong>Playwright documentation</strong>. Disponível em: https://playwright.dev/docs/intro. Acesso em: 4 nov. 2026.</p>
+<p class="ni">MOZILLA DEVELOPER NETWORK. <strong>MDN Web Docs</strong>: ARIA, HTML e CSS. Disponível em: https://developer.mozilla.org/pt-BR/. Acesso em: 4 nov. 2026.</p>
+<p class="ni">NIELSEN, Jakob. <strong>10 usability heuristics for user interface design</strong>. Nielsen Norman Group, 1994. Disponível em: https://www.nngroup.com/articles/ten-usability-heuristics/. Acesso em: 4 nov. 2026.</p>
+<p class="ni">OWASP FOUNDATION. <strong>OWASP Top 10:2021</strong>. Disponível em: https://owasp.org/Top10/. Acesso em: 4 nov. 2026.</p>
+<p class="ni">PRESSMAN, Roger S.; MAXIM, Bruce R. <strong>Engenharia de software</strong>: uma abordagem profissional. 9. ed. Porto Alegre: AMGH, 2021.</p>
+<p class="ni">SOMMERVILLE, Ian. <strong>Engenharia de software</strong>. 10. ed. São Paulo: Pearson Education do Brasil, 2018.</p>
+<p class="ni">W3C – WORLD WIDE WEB CONSORTIUM. <strong>Web Content Accessibility Guidelines (WCAG) 2.1</strong>. W3C Recommendation, 5 jun. 2018. Disponível em: https://www.w3.org/TR/WCAG21/. Acesso em: 4 nov. 2026.</p>
+<p class="ni">W3C – WORLD WIDE WEB CONSORTIUM. <strong>WAI-ARIA Authoring Practices Guide (APG)</strong>. Disponível em: https://www.w3.org/WAI/ARIA/apg/. Acesso em: 4 nov. 2026.</p>
+</div>
+</section>
+
+<!-- ============================ ANEXOS ============================ -->
+<section class="secao">
+<h1 id="s8" data-toc="1">Anexo A – Resultado da execução dos testes automatizados</h1>
+<p>Saída da execução completa da suíte com o comando <code>npx playwright test</code> (caminhos dos arquivos de teste omitidos para caber na página): 56 testes aprovados e nenhuma falha. O relatório HTML interativo está no repositório, em <code>docs/relatorio-testes/</code>, e os resultados em formato JSON estão em <code>docs/resultados-testes.json</code>.</p>
+<figure><img src="../prints/26-resultado-testes.png" style="width:86%" />
+<p class="fonte">Fonte: o autor (2026).</p></figure>
+</section>
+
+<section class="secao">
+<h1 id="s9" data-toc="1">Anexo B – Telas complementares</h1>
+<figure><figcaption>Figura 34 – Meus agendamentos (após novo agendamento)</figcaption>
+<img src="../prints/06-paciente-consultas.png" style="width:86%" />
+<p class="fonte">Fonte: o autor (2026).</p></figure>
+<figure><figcaption>Figura 35 – Cadastros com abas (pacientes e profissionais)</figcaption>
+<img src="../prints/17-admin-cadastros.png" style="width:86%" />
+<p class="fonte">Fonte: o autor (2026).</p></figure>
+<figure><figcaption>Figura 36 – Modo de alto contraste</figcaption>
+<img src="../prints/20-alto-contraste.png" style="width:86%" />
+<p class="fonte">Fonte: o autor (2026).</p></figure>
+<div class="duas">
+<figure><figcaption>Figura 37 – Agenda em cartões (celular)</figcaption><img src="../prints/24-mobile-agenda.png" style="width:72%" /></figure>
+<figure><figcaption>Figura 38 – Mapa de leitos (celular)</figcaption><img src="../prints/25-mobile-leitos.png" style="width:72%" /></figure>
+</div>
+<p class="fonte">Fonte: o autor (2026).</p>
+</section>
+
+</body>
+</html>

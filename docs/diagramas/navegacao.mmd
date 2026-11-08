@@ -1,0 +1,22 @@
+flowchart TB
+  classDef pub fill:#ffffff,stroke:#4d5d6b,color:#17232d
+  classDef pac fill:#e3f1f3,stroke:#0b5f6e,color:#17232d
+  classDef pro fill:#e3eefa,stroke:#0b4f8a,color:#17232d
+  classDef adm fill:#fdf0d9,stroke:#8a5300,color:#17232d
+  L["/login"]:::pub --> C["/cadastro"]:::pub
+  L -->|perfil paciente| P["/paciente — Início"]:::pac
+  L -->|perfil profissional| PR["/profissional — Agenda"]:::pro
+  L -->|perfil admin| A["/admin — Painel"]:::adm
+  P --> P1["/paciente/agendar"]:::pac
+  P --> P2["/paciente/consultas"]:::pac
+  P --> P3["/paciente/historico"]:::pac
+  P --> P4["/paciente/dados (LGPD)"]:::pac
+  P2 --> T["/teleconsulta/:id"]:::pac
+  PR --> PR1["/profissional/pacientes"]:::pro
+  PR --> PR2["/profissional/prontuario/:id"]:::pro
+  PR1 --> PR2
+  PR --> T
+  A --> A1["/admin/leitos"]:::adm
+  A --> A2["/admin/cadastros"]:::adm
+  A --> A3["/admin/relatorios"]:::adm
+  A --> A4["/admin/auditoria"]:::adm

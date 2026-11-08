@@ -1,0 +1,11 @@
+flowchart LR
+  classDef n fill:#e3f1f3,stroke:#0b5f6e,color:#17232d
+  classDef f fill:#ffffff,stroke:#4d5d6b,stroke-dasharray:5 4,color:#4d5d6b
+  U1["💻 Navegador desktop"]:::n
+  U2["📱 Navegador mobile"]:::n
+  CDN["GitHub Pages / CDN<br/>HTML · CSS · JS estáticos<br/>HTTPS obrigatório"]:::n
+  GW["API Gateway + WAF<br/>(rate limit, TLS 1.3)"]:::f
+  BE["Serviços back-end<br/>(várias unidades)"]:::f
+  DB[("Banco de dados<br/>AES-256 em repouso<br/>réplica + backup")]:::f
+  U1 & U2 -->|HTTPS| CDN
+  U1 & U2 -.->|REST/JSON| GW --> BE --> DB

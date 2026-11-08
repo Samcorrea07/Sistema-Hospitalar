@@ -1,0 +1,26 @@
+flowchart LR
+  classDef c fill:#e3f1f3,stroke:#0b5f6e,color:#17232d
+  classDef f fill:#ffffff,stroke:#4d5d6b,stroke-dasharray:5 4,color:#4d5d6b
+  subgraph Navegador["Navegador (SPA estática)"]
+    IDX["index.html<br/>(shell + landmarks)"]:::c
+    CSS["css/styles.css<br/>(tokens, responsivo, alto contraste)"]:::c
+    APP["app.js<br/>Layout · Roteador hash · Guarda RBAC · Foco"]:::c
+    UI["ui.js<br/>Modal acessível · Toast aria-live · Escape XSS · Gráficos"]:::c
+    subgraph Views["views/"]
+      V1["auth.js"]:::c
+      V2["paciente.js"]:::c
+      V3["profissional.js"]:::c
+      V4["admin.js"]:::c
+      V5["telemedicina.js"]:::c
+    end
+    ST["store.js<br/>Estado · Sessão · Auditoria"]:::c
+    DATA["data.js<br/>(mock)"]:::c
+  end
+  API["API REST /api/v1<br/>(fase back-end)"]:::f
+  RTC["Servidor WebRTC/TURN<br/>(fase back-end)"]:::f
+  IDX --> APP --> Views
+  Views --> UI
+  Views --> ST --> DATA
+  ST -. "fetch HTTPS + JWT" .-> API
+  V5 -. "DTLS-SRTP" .-> RTC
+  IDX --- CSS

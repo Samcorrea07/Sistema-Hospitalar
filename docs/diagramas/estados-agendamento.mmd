@@ -1,0 +1,8 @@
+stateDiagram-v2
+  [*] --> Agendada: paciente confirma
+  Agendada --> Cancelada: paciente cancela
+  Agendada --> EmAtendimento: teleconsulta iniciada / check-in
+  EmAtendimento --> Realizada: profissional encerra e registra
+  Agendada --> Realizada: profissional conclui (presencial)
+  Cancelada --> [*]
+  Realizada --> [*]

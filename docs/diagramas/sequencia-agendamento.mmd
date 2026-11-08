@@ -1,0 +1,28 @@
+sequenceDiagram
+  autonumber
+  actor Pac as Paciente
+  participant V as View Agendar
+  participant R as Roteador/Guarda
+  participant S as Store (serviço)
+  participant A as Auditoria
+  Pac->>R: acessa #/paciente/agendar
+  R->>R: verifica sessão e perfil (RBAC)
+  R->>V: render() + montar()
+  Pac->>V: escolhe tipo, especialidade, profissional e data
+  V->>S: horariosOcupados(profissional, data)
+  S-->>V: lista de horários ocupados
+  V-->>Pac: exibe horários livres (ocupados desabilitados)
+  Pac->>V: seleciona horário e "Revisar e confirmar"
+  V->>V: valida campos (mensagens com aria-invalid)
+  V-->>Pac: diálogo de confirmação (resumo)
+  Pac->>V: Confirmar
+  V->>S: agendar(dados)
+  alt horário ainda livre
+    S->>S: cria agendamento + notificação
+    S->>A: AGENDAMENTO_CRIADO
+    S-->>V: ok
+    V-->>Pac: toast "Agendamento confirmado" → #/paciente/consultas
+  else horário ocupado (concorrência)
+    S-->>V: erro "Horário indisponível"
+    V-->>Pac: toast de erro e atualiza horários
+  end

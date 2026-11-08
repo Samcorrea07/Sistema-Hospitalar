@@ -1,0 +1,19 @@
+{
+  "name": "sghss-vidaplus",
+  "version": "1.0.0",
+  "description": "Protótipo front-end do Sistema de Gestão Hospitalar e de Serviços de Saúde (SGHSS) — VidaPlus",
+  "private": true,
+  "scripts": {
+    "start": "npx http-server . -p 8080 -c-1",
+    "test": "playwright test",
+    "test:e2e": "playwright test tests/e2e",
+    "test:a11y": "playwright test tests/acessibilidade",
+    "test:report": "playwright show-report"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.10.0",
+    "@playwright/test": "1.63.0",
+    "http-server": "^14.1.1"
+  },
+  "license": "MIT"
+}

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<title>Wireframes — SGHSS VidaPlus</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  body { margin: 0; padding: 30px; background: #fff; font-family: "Comic Neue", "Segoe Print", "Segoe UI", Arial, sans-serif; color: #333; }
+  .frame { width: 960px; border: 2px solid #333; border-radius: 6px; margin: 0 0 40px; background: #fff; position: relative; }
+  .frame.mobile { width: 340px; border-radius: 26px; padding: 10px 0 18px; }
+  .titulo { font: 700 13px "Segoe UI", Arial; background: #333; color: #fff; padding: 4px 10px; display: inline-block; position: absolute; top: -24px; left: -2px; border-radius: 4px 4px 0 0; }
+  .barra { height: 46px; border-bottom: 2px solid #333; display: flex; align-items: center; gap: 10px; padding: 0 12px; }
+  .row { display: flex; gap: 12px; }
+  .col { display: flex; flex-direction: column; gap: 10px; }
+  .box { border: 2px dashed #777; border-radius: 6px; padding: 10px; font-size: 13px; position: relative; }
+  .solid { border-style: solid; }
+  .ph { background: repeating-linear-gradient(45deg, #f2f2f2 0 8px, #fff 8px 16px); }
+  .x { position: relative; background: #f6f6f6; }
+  .x::before, .x::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top right, transparent calc(50% - 1px), #bbb, transparent calc(50% + 1px)); }
+  .x::after { background: linear-gradient(to bottom right, transparent calc(50% - 1px), #bbb, transparent calc(50% + 1px)); }
+  .linha { height: 9px; background: #ccc; border-radius: 4px; margin: 6px 0; }
+  .l60 { width: 60%; } .l40 { width: 40%; } .l80 { width: 80%; } .l30 { width: 30%; }
+  .btn { border: 2px solid #333; border-radius: 6px; padding: 6px 12px; font: 700 12px "Segoe UI", Arial; display: inline-block; text-align: center; }
+  .btn.p { background: #333; color: #fff; }
+  .input { border: 2px solid #999; border-radius: 5px; height: 30px; margin: 4px 0 10px; }
+  .rot { font: 600 11px "Segoe UI", Arial; color: #555; }
+  .menu { width: 170px; border-right: 2px solid #333; padding: 12px; display: flex; flex-direction: column; gap: 10px; }
+  .menu .item { height: 22px; border: 2px dashed #999; border-radius: 4px; font: 11px "Segoe UI"; padding: 2px 6px; }
+  .menu .item.on { border-style: solid; border-color: #333; font-weight: 700; }
+  .nota { position: absolute; background: #fff59d; border: 1px solid #c9b400; font: 11px "Segoe UI", Arial; padding: 4px 6px; border-radius: 3px; box-shadow: 1px 2px 3px rgba(0,0,0,.15); max-width: 170px; z-index: 2; }
+  .kpi { flex: 1; height: 58px; }
+  .slot { width: 52px; height: 26px; border: 2px solid #999; border-radius: 4px; font: 11px "Segoe UI"; text-align: center; line-height: 22px; }
+  .slot.sel { background: #333; color: #fff; border-color: #333; }
+  .slot.off { border-style: dashed; color: #aaa; text-decoration: line-through; }
+  .leito { width: 62px; height: 48px; border: 2px solid #777; border-radius: 5px; font: 11px "Segoe UI"; text-align: center; padding-top: 4px; }
+  .circ { width: 26px; height: 26px; border: 2px solid #333; border-radius: 50%; }
+  h4 { margin: 0 0 6px; font: 700 15px "Segoe UI", Arial; }
+</style>
+</head>
+<body>
+
+<!-- 1. LOGIN -->
+<div class="frame" id="wf-login"><span class="titulo">W1 · Login com seleção de perfil (desktop)</span>
+  <div class="row" style="height: 430px;">
+    <div class="box x" style="flex: 1.1; margin: 14px; border-style: solid;"><span class="rot" style="position:relative;z-index:1;background:#f6f6f6">[Área institucional: marca + benefícios]</span></div>
+    <div style="flex: 1; padding: 28px 40px 0 10px;">
+      <div class="linha l30" style="height:16px"></div>
+      <h4 style="margin-top:12px">Acesse sua conta</h4>
+      <div class="rot">Entrar como</div>
+      <div class="row" style="margin: 6px 0 12px;"><div class="box solid" style="flex:1;text-align:center;border-width:3px">○ Paciente</div><div class="box" style="flex:1;text-align:center">○ Profissional</div><div class="box" style="flex:1;text-align:center">○ Admin</div></div>
+      <div class="rot">E-mail</div><div class="input"></div>
+      <div class="rot">Senha</div><div class="input"></div>
+      <div class="btn p" style="width:100%">ENTRAR</div>
+      <p class="rot" style="text-align:center">Novo paciente? <u>Crie seu cadastro</u></p>
+      <p class="rot">🛡 Aviso LGPD + link para a política de privacidade</p>
+    </div>
+  </div>
+  <div class="nota" style="right: 8px; top: 96px;">Perfil escolhido define o menu e as permissões (RBAC)</div>
+  <div class="nota" style="right: 8px; top: 230px;">Erros aparecem abaixo de cada campo e são lidos pelo leitor de tela</div>
+</div>
+
+<!-- 2. PAINEL DO PACIENTE -->
+<div class="frame" id="wf-paciente"><span class="titulo">W2 · Painel do paciente</span>
+  <div class="barra"><div class="circ"></div><div class="linha l30" style="width:90px"></div><div style="flex:1"></div><span class="rot">A− A+ [contraste]</span><div class="circ"></div><span class="rot">🔔</span><div class="circ"></div><div class="btn">Sair</div></div>
+  <div class="row" style="min-height: 400px;">
+    <div class="menu"><div class="item on">Início</div><div class="item">Agendar</div><div class="item">Meus agendamentos</div><div class="item">Histórico clínico</div><div class="item">Meus dados e LGPD</div></div>
+    <div class="col" style="flex:1; padding: 14px;">
+      <div class="row" style="justify-content:space-between"><div><h4>Olá, [Nome]</h4><div class="linha l60" style="width:140px"></div></div><div class="btn p">+ Novo agendamento</div></div>
+      <div class="row">
+        <div class="box solid" style="flex:1"><h4>Próximos atendimentos</h4>
+          <div class="row" style="align-items:center"><div class="box x" style="width:44px;height:44px"></div><div style="flex:1"><div class="linha l80"></div><div class="linha l60"></div></div><div class="btn p">Entrar</div><div class="btn">Cancelar</div></div>
+          <div class="row" style="align-items:center;margin-top:10px"><div class="box x" style="width:44px;height:44px"></div><div style="flex:1"><div class="linha l80"></div><div class="linha l60"></div></div><div class="btn">Cancelar</div></div>
+        </div>
+        <div class="box solid" style="flex:1"><h4>Notificações (2)</h4><div class="linha l80"></div><div class="linha l60"></div><div class="linha l80" style="margin-top:14px"></div><div class="linha l40"></div><div class="linha l60" style="margin-top:14px"></div></div>
+      </div>
+      <div class="row"><div class="box kpi">Atalho: Agendar</div><div class="box kpi">Atalho: Histórico</div><div class="box kpi">Atalho: Teleconsulta</div><div class="box kpi">Atalho: Privacidade</div></div>
+    </div>
+  </div>
+  <div class="nota" style="left: 230px; top: 400px;">Botão "Entrar" só aparece no dia da teleconsulta</div>
+</div>
+
+<!-- 3. AGENDAMENTO -->
+<div class="frame" id="wf-agendar"><span class="titulo">W3 · Agendamento em etapas</span>
+  <div style="padding: 16px 20px;">
+    <h4>Novo agendamento</h4>
+    <div class="row rot" style="margin-bottom:12px">① Tipo — ② Especialidade/profissional — ③ Data e horário — ④ Confirmação</div>
+    <div class="row" style="margin-bottom: 14px;"><div class="box solid" style="flex:1;text-align:center;border-width:3px">Presencial</div><div class="box" style="flex:1;text-align:center">Teleconsulta</div><div class="box" style="flex:1;text-align:center">Exame</div></div>
+    <div class="row"><div style="flex:1"><div class="rot">Especialidade ▾</div><div class="input"></div></div><div style="flex:1"><div class="rot">Profissional ▾ (filtrado)</div><div class="input"></div></div></div>
+    <div class="row"><div style="flex:1"><div class="rot">Unidade ▾ (oculto se teleconsulta)</div><div class="input"></div></div><div style="flex:1"><div class="rot">Motivo</div><div class="input"></div></div></div>
+    <div class="rot">Data 📅</div><div class="input" style="width: 45%"></div>
+    <div class="row" style="flex-wrap: wrap; gap: 6px;"><div class="slot">08:00</div><div class="slot">08:30</div><div class="slot sel">09:00</div><div class="slot off">09:30</div><div class="slot">10:00</div><div class="slot off">10:30</div><div class="slot">11:00</div><div class="slot">14:00</div><div class="slot">14:30</div></div>
+    <div class="row" style="justify-content: flex-end; margin-top: 14px;"><div class="btn">Cancelar</div><div class="btn p">Revisar e confirmar</div></div>
+  </div>
+  <div class="nota" style="right: 20px; top: 300px;">Horários ocupados ficam desabilitados → evita conflito de agenda</div>
+</div>
+
+<!-- 4. PRONTUÁRIO -->
+<div class="frame" id="wf-prontuario"><span class="titulo">W4 · Prontuário eletrônico (profissional)</span>
+  <div class="barra"><div class="circ"></div><div class="linha" style="width:90px"></div><div style="flex:1"></div><div class="circ"></div><div class="btn">Sair</div></div>
+  <div class="row" style="min-height: 380px;">
+    <div class="menu"><div class="item on">Agenda</div><div class="item">Pacientes</div></div>
+    <div class="col" style="flex:1; padding: 14px;">
+      <div class="row" style="justify-content:space-between"><div><h4>Prontuário — [Paciente]</h4><div class="linha" style="width:260px"></div></div><div class="btn p">Emitir receita digital</div></div>
+      <div class="box solid" style="background:#eee">⚠ Alerta de alergia (destaque)</div>
+      <div class="row">
+        <div class="box solid" style="flex:1.3"><h4>Registrar evolução</h4><div class="row"><div style="flex:1"><div class="rot">Tipo ▾</div><div class="input"></div></div><div style="flex:1"><div class="rot">CID-10</div><div class="input"></div></div></div><div class="rot">Título</div><div class="input"></div><div class="rot">Anamnese / conduta</div><div class="input" style="height:70px"></div><div class="btn p" style="float:right">Salvar</div></div>
+        <div class="box solid" style="flex:1"><h4>Histórico (linha do tempo)</h4><div class="linha l40"></div><div class="linha l80"></div><div class="linha l60"></div><div class="linha l40" style="margin-top:14px"></div><div class="linha l80"></div><h4 style="margin-top:12px">Receitas</h4><div class="linha l60"></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="nota" style="left: 200px; bottom: 10px;">Cada acesso ao prontuário gera registro de auditoria (LGPD)</div>
+</div>
+
+<!-- 5. TELECONSULTA -->
+<div class="frame" id="wf-tele"><span class="titulo">W5 · Sala de teleconsulta</span>
+  <div class="row" style="padding: 14px; min-height: 330px;">
+    <div class="box solid ph" style="flex: 2; position: relative;"><span class="rot">[Vídeo do outro participante]</span>
+      <div class="box solid" style="position:absolute; right: 10px; top: 10px; width: 120px; height: 80px; background:#fff"><span class="rot">[Sua câmera]</span></div>
+      <div class="row" style="position:absolute; bottom: 12px; left: 0; right: 0; justify-content: center;"><div class="circ" style="width:36px;height:36px"></div><div class="circ" style="width:36px;height:36px"></div><div class="circ" style="width:36px;height:36px;background:#333"></div></div>
+    </div>
+    <div class="col" style="flex: 1;"><div class="box solid" style="flex:1"><h4>Registro do atendimento</h4><div class="input" style="height:90px"></div></div><div class="box solid" style="flex:1"><h4>Chat</h4><div class="linha l60"></div><div class="linha l40"></div><div class="input"></div></div></div>
+  </div>
+  <div class="nota" style="left: 30px; top: 30px;">Selo "conexão criptografada ponta a ponta"</div>
+  <div class="nota" style="left: 230px; bottom: 30px;">Microfone · Câmera · Encerrar (aria-pressed)</div>
+</div>
+
+<!-- 6. ADMIN -->
+<div class="frame" id="wf-admin"><span class="titulo">W6 · Painel administrativo e mapa de leitos</span>
+  <div class="barra"><div class="circ"></div><div class="linha" style="width:90px"></div><div class="box" style="padding:4px 10px">Unidade: [Todas ▾]</div><div style="flex:1"></div><div class="circ"></div><div class="btn">Sair</div></div>
+  <div class="row" style="min-height: 400px;">
+    <div class="menu"><div class="item on">Painel</div><div class="item">Leitos</div><div class="item">Cadastros</div><div class="item">Relatórios</div><div class="item">Auditoria</div></div>
+    <div class="col" style="flex:1; padding: 14px;">
+      <div class="row"><div class="box solid kpi">KPI Ocupação %</div><div class="box solid kpi">KPI Atendimentos</div><div class="box solid kpi">KPI Pacientes</div><div class="box solid kpi">KPI Estoque crítico</div></div>
+      <div class="row"><div class="box solid ph" style="flex:1.3;height:150px"><span class="rot">[Gráfico receitas × despesas]</span></div><div class="box solid" style="flex:1"><h4>Suprimentos críticos</h4><div class="linha l80"></div><div class="linha l60"></div><div class="linha l80"></div></div></div>
+      <div class="box solid"><h4>Mapa de leitos</h4><div class="row" style="flex-wrap:wrap;gap:6px"><div class="leito">CM-01<br>Ocup.</div><div class="leito" style="border-style:dashed">CM-02<br>Livre</div><div class="leito">CM-03<br>Ocup.</div><div class="leito" style="border-style:dotted">CM-04<br>Higien.</div><div class="leito" style="border-style:dashed">CM-05<br>Livre</div><div class="leito">UTI-01<br>Ocup.</div></div></div>
+    </div>
+  </div>
+  <div class="nota" style="left: 330px; top: 8px;">Filtro de unidade → múltiplas unidades</div>
+</div>
+
+<!-- 7. MOBILE -->
+<div class="row" id="wf-mobile" style="gap: 30px; padding-top: 24px;">
+  <div class="frame mobile"><span class="titulo">W7a · Mobile — menu recolhido</span>
+    <div class="barra" style="border-top: 2px solid #333">☰ <div class="linha" style="width:70px"></div><div style="flex:1"></div><div class="circ"></div></div>
+    <div style="padding: 12px;"><h4>Olá, [Nome]</h4><div class="btn p" style="width:100%">+ Novo agendamento</div>
+      <div class="box solid" style="margin-top:10px"><h4>Próximos</h4><div class="linha l80"></div><div class="linha l60"></div><div class="row" style="margin-top:6px"><div class="btn p">Entrar</div><div class="btn">Cancelar</div></div></div>
+      <div class="box solid" style="margin-top:10px"><h4>Notificações</h4><div class="linha l80"></div><div class="linha l60"></div></div>
+      <div class="row" style="margin-top:10px"><div class="box kpi"></div><div class="box kpi"></div></div></div>
+  </div>
+  <div class="frame mobile"><span class="titulo">W7b · Mobile — menu aberto</span>
+    <div class="barra" style="border-top: 2px solid #333">✕ <div class="linha" style="width:70px"></div><div style="flex:1"></div><div class="circ"></div></div>
+    <div class="row" style="height: 380px;"><div class="menu" style="width: 210px; background:#fff"><div class="item on">Início</div><div class="item">Agendar</div><div class="item">Meus agendamentos</div><div class="item">Histórico</div><div class="item">Meus dados</div></div><div style="flex:1;background:#ddd"></div></div>
+  </div>
+  <div class="frame mobile"><span class="titulo">W7c · Mobile — tabela vira cartões</span>
+    <div class="barra" style="border-top: 2px solid #333">☰ <div class="linha" style="width:70px"></div></div>
+    <div style="padding: 12px;"><h4>Minha agenda</h4>
+      <div class="box solid"><div class="rot">Hora: 08:30</div><div class="rot">Paciente: [Nome]</div><div class="rot">Tipo: Presencial</div><div class="row" style="margin-top:6px"><div class="btn">Prontuário</div><div class="btn p">Concluir</div></div></div>
+      <div class="box solid" style="margin-top:10px"><div class="rot">Hora: 09:15</div><div class="rot">Paciente: [Nome]</div><div class="rot">Tipo: Teleconsulta</div><div class="row" style="margin-top:6px"><div class="btn">Prontuário</div><div class="btn p">Iniciar</div></div></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
